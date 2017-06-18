@@ -1,15 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CarController : MonoBehaviour {
+
+    public CarBalanceData CarData;
 
     public Transform Steering;
     public Rigidbody FrontLeftWheel;
     public Rigidbody FrontRightWheel;
-
-    public float Speed = 30f;
-    public float MaxTurningAngle = 15f;
 
     private float _motorInput;
     private float _steeringInput;
@@ -20,8 +17,8 @@ public class CarController : MonoBehaviour {
     }
 
     private void Update() {
-        _motorInput = Speed * 100f * Input.GetAxis("Vertical");
-        _steeringInput = MaxTurningAngle * Input.GetAxis("Horizontal");
+        _motorInput = CarData.Speed * 100f * Input.GetAxis("Vertical");
+        _steeringInput = CarData.MaxTurningAngle * Input.GetAxis("Horizontal");
 
         Steering.localRotation = Quaternion.Euler(0f, _steeringInput, 0f);
     }
