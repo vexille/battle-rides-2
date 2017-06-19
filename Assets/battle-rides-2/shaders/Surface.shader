@@ -18,8 +18,7 @@ Shader "Planet/Custom Matcap"
    
     Subshader 
     {
-    	Tags {"RenderType"="Opaque"}
-		
+    	Tags {"RenderType"="Opaque" "LightMode" = "ForwardBase"}		
         Pass 
         {
             CGPROGRAM
@@ -27,6 +26,7 @@ Shader "Planet/Custom Matcap"
                 #pragma fragment frag
                 #pragma fragmentoption ARB_precision_hint_fastest
                 #include "UnityCG.cginc"
+                #include "AutoLight.cginc"
                 #pragma glsl_no_auto_normalization
                 #pragma shader_feature VERTCOL_ON
                 #pragma shader_feature FIXEDRIM_ON
@@ -34,6 +34,8 @@ Shader "Planet/Custom Matcap"
                 #pragma shader_feature FOG_ON
                 #pragma shader_feature MAINTEX_ON
 				#pragma shader_feature NORMALMAP_ON
+				#pragma multi_compile_fwdbase
+
 
                 #if FOG_ON
                     #pragma multi_compile_fog
@@ -76,6 +78,7 @@ Shader "Planet/Custom Matcap"
                     #if FOG_ON
                         UNITY_FOG_COORDS(4)
                     #endif
+                    LIGHTING_COORDS(5,6)
                  };
                
                 v2f vert (appdata_base0 v)
@@ -101,6 +104,7 @@ Shader "Planet/Custom Matcap"
                         UNITY_TRANSFER_FOG(o,o.pos);
                     #endif
 
+                    TRANSFER_VERTEX_TO_FRAGMENT(o);
                     return o;
                 }
 
@@ -141,8 +145,8 @@ Shader "Planet/Custom Matcap"
                     #if FOG_ON
                         UNITY_APPLY_FOG(i.fogCoord, tex);
                     #endif
-
-					return fixed4(tex.rgb + refl.rgb,1);
+                    float attenuation = LIGHT_ATTENUATION(i);
+					return fixed4(tex.rgb + refl.rgb,1) * attenuation;
                 }
             ENDCG
         }
