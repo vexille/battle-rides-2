@@ -21,21 +21,23 @@ public class CarController : MonoBehaviour {
         _steeringInput = CarData.MaxTurningAngle * Input.GetAxis("Horizontal");
 
         Steering.localRotation = Quaternion.Euler(0f, _steeringInput, 0f);
+
+		var steeringDirection = Steering.forward;
+		var leftForce = steeringDirection * _motorInput;
+		var rightForce = steeringDirection * _motorInput;
+		//var mainForce = Steering.forward * _motorInput;
+
+		FrontLeftWheel.AddForce(leftForce);
+		FrontRightWheel.AddForce(rightForce);
+		//_rigidbody.AddForce(mainForce);
+
+		UpdateFriction();
     }
 
     public void FixedUpdate() {
-        var steeringDirection = Steering.forward;
-        var leftForce = steeringDirection * _motorInput;
-        var rightForce = steeringDirection * _motorInput;
-        //var mainForce = Steering.forward * _motorInput;
+        
 
-        FrontLeftWheel.AddForce(leftForce);
-        FrontRightWheel.AddForce(rightForce);
-        //_rigidbody.AddForce(mainForce);
-
-        UpdateFriction();
-
-        DrawDebugLines(leftForce, rightForce);
+       // DrawDebugLines(leftForce, rightForce);
     }
 
     private void UpdateFriction() {

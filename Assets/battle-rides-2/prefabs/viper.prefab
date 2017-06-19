@@ -95,24 +95,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1306470800764544
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4282237020819606}
-  - component: {fileID: 33110105517675712}
-  - component: {fileID: 65786637274077806}
-  - component: {fileID: 23636899911695684}
-  m_Layer: 0
-  m_Name: body
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!1 &1309123044709382
 GameObject:
   m_ObjectHideFlags: 1
@@ -261,19 +243,6 @@ Transform:
   m_Father: {fileID: 4286453775598978}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!4 &4282237020819606
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1306470800764544}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.084, z: 0}
-  m_LocalScale: {x: 0.94467616, y: 0.4738122, z: 2.265467}
-  m_Children: []
-  m_Father: {fileID: 4511426293973224}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4286453775598978
 Transform:
   m_ObjectHideFlags: 1
@@ -289,7 +258,7 @@ Transform:
   - {fileID: 4061600701678452}
   - {fileID: 4268653508793092}
   m_Father: {fileID: 4511426293973224}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4424170903294728
 Transform:
@@ -302,7 +271,7 @@ Transform:
   m_LocalScale: {x: 1.8319429, y: 1.8319439, z: 1.8319439}
   m_Children: []
   m_Father: {fileID: 4511426293973224}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 90.00001}
 --- !u!4 &4511426293973224
 Transform:
@@ -315,7 +284,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4666193885005800}
-  - {fileID: 4282237020819606}
   - {fileID: 4424170903294728}
   - {fileID: 4286453775598978}
   m_Father: {fileID: 0}
@@ -478,38 +446,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!23 &23636899911695684
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1306470800764544}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: ba7a6ace3c39afb4eab8645565325c9b, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!23 &23683721673113884
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -606,13 +542,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33110105517675712
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1306470800764544}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &33150276731649696
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -723,18 +652,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 110
   m_CollisionDetection: 0
---- !u!65 &65786637274077806
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1306470800764544}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114595689283054644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -746,11 +663,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37d3e370baeb3f64b93745a35e98a34f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CarData: {fileID: 11400000, guid: 6bcf12017a0870d4c9b548efc6b1f8fa, type: 2}
   Steering: {fileID: 4666193885005800}
   FrontLeftWheel: {fileID: 54508628996420950}
   FrontRightWheel: {fileID: 54971100911559240}
-  Speed: 20
-  MaxTurningAngle: 15
 --- !u!135 &135264469791272312
 SphereCollider:
   m_ObjectHideFlags: 1
