@@ -560,10 +560,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37d3e370baeb3f64b93745a35e98a34f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CarData: {fileID: 11400000, guid: 6bcf12017a0870d4c9b548efc6b1f8fa, type: 2}
   Steering: {fileID: 4096566566850214}
   FrontLeftWheel: {fileID: 54021837543448652}
   FrontRightWheel: {fileID: 54738515262529268}
+  DebugText: 0
+  Model:
+    CurrentSpeed: 0
+    SteeringAngle: 0
+    Rigidbody: {fileID: 0}
+    SteeringInput: 0
+    AccelInput: 0
 --- !u!135 &135459816159094506
 SphereCollider:
   m_ObjectHideFlags: 1

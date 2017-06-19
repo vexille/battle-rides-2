@@ -1,74 +1,81 @@
-﻿using UnityEngine;
+﻿using Luderia.BattleRides2.Data;
+using LuftSchloss.Core;
+using UnityEngine;
 
-public class CarController : MonoBehaviour {
+namespace Luderia.BattleRides2.Cars {
+    public class CarController : LuftController {
+        private CarBalanceData _carData;
+        private CarView _view;
+        private CarModel _model;
 
-    public CarBalanceData CarData;
+        public CarView View { get { return _view; } }
 
-    public Transform Steering;
-    public Rigidbody FrontLeftWheel;
-    public Rigidbody FrontRightWheel;
+        public void InitializeCar(CarPrefabDataPair carData, Vector3 position, Quaternion rotation) {
+            _carData = carData.Data;
+            _view = GameObject.Instantiate(carData.Prefab, position, rotation).GetComponent<CarView>();
 
-    private float _motorInput;
-    private float _steeringInput;
-    private Rigidbody _rigidbody;
+            _model = new CarModel();
+            _model.Rigidbody = _view.GetComponent<Rigidbody>();
 
-    private void Awake() {
-        _rigidbody = GetComponent<Rigidbody>();
-    }
+            _view.Model = _model;
+        }
 
-    private void Update() {
-        _motorInput = CarData.Speed * 100f * Input.GetAxis("Vertical");
-        _steeringInput = CarData.MaxTurningAngle * Input.GetAxis("Horizontal");
+        public override void OnUpdate() {
+            base.OnUpdate();
 
-        Steering.localRotation = Quaternion.Euler(0f, _steeringInput, 0f);
-    }
+            { // TODO: Tacar isso no controle de input
+                _model.AccelInput = Input.GetKey(KeyCode.S) ? -1 : 1;
 
-    public void FixedUpdate() {
-        var steeringDirection = Steering.forward;
-        var leftForce = steeringDirection * _motorInput;
-        var rightForce = steeringDirection * _motorInput;
-        //var mainForce = Steering.forward * _motorInput;
+                if (Input.GetKey(KeyCode.A)) {
+                    _model.SteeringInput = -1;
+                } else
+                if (Input.GetKey(KeyCode.D)) {
+                    _model.SteeringInput = 1;
+                } else {
+                    _model.SteeringInput = 0;
+                }
+            }
 
-        FrontLeftWheel.AddForce(leftForce);
-        FrontRightWheel.AddForce(rightForce);
-        //_rigidbody.AddForce(mainForce);
+            // Handle speed update
+            if (_model.AccelInput > 0) {
+                _model.CurrentSpeed = Mathf.Min(_model.CurrentSpeed + _carData.Acceleration, _carData.TopSpeed * 100f);
+            } else {
+                _model.CurrentSpeed = Mathf.Max(_model.CurrentSpeed - _carData.ReverseAcceleration, -_carData.TopSpeedReverse * 100f);
+            }
+            
+            // Inverts angle when reversing
+            _model.SteeringInput *= _model.AccelInput;
 
-        UpdateFriction();
+            //_model.CurrentSpeed = _carData.TopSpeed * 100f * Input.GetAxis("Vertical");
+            _model.SteeringAngle = _carData.MaxTurningAngle * _model.SteeringInput;
+        }
 
-        DrawDebugLines(leftForce, rightForce);
-    }
+        public override void OnFixedUpdate() {
+            base.OnFixedUpdate();
 
-    private void UpdateFriction() {
-        Vector3 impulse = _rigidbody.mass * -GetLateralVelocity();
-        _rigidbody.AddForce(impulse, ForceMode.Impulse);
-    }
+            var steeringDirection = _view.Steering.forward;
+            var leftForce = steeringDirection * _model.CurrentSpeed;
+            var rightForce = steeringDirection * _model.CurrentSpeed;
 
-    private Vector3 GetLateralVelocity() {
-        var rightNormal = transform.right;
-        return Vector3.Dot(rightNormal, _rigidbody.velocity) * rightNormal;
-    }
+            _view.FrontLeftWheel.AddForce(leftForce);
+            _view.FrontRightWheel.AddForce(rightForce);
 
-    private void DrawDebugLines(Vector3 leftForce, Vector3 rightForce) {
-        Debug.DrawLine(FrontLeftWheel.transform.position, FrontLeftWheel.transform.position + leftForce.normalized);
-        Debug.DrawLine(FrontRightWheel.transform.position, FrontRightWheel.transform.position + rightForce.normalized);
+            _view.DrawDebugLines(leftForce, rightForce);
+            UpdateFriction();
+        }
 
-        Debug.DrawLine(FrontLeftWheel.transform.position, FrontLeftWheel.transform.position + FrontLeftWheel.transform.forward, Color.blue);
-        Debug.DrawLine(FrontRightWheel.transform.position, FrontRightWheel.transform.position + FrontRightWheel.transform.forward, Color.blue);
+        private void UpdateFriction() {
+            Vector3 impulse = _model.Rigidbody.mass * -GetLateralVelocity();
+            _model.Rigidbody.AddForce(impulse, ForceMode.Impulse);
+        }
 
-        //var mainVelocity = _rigidbody.velocity;
-        //Debug.DrawLine(transform.position, transform.position + mainVelocity, Color.red);
-    }
+        private Vector3 GetLateralVelocity() {
+            var rightNormal = _view.transform.right;
+            return Vector3.Dot(rightNormal, _model.Rigidbody.velocity) * rightNormal;
+        }
 
-    private void OnGUI() {
-        var mainVelocity = _rigidbody.velocity;
-        //var leftVelocity = FrontLeftWheel.velocity;
-        //var rightVelocity = FrontRightWheel.velocity;
-        GUIStyle style = new GUIStyle();
-        style.fontStyle = FontStyle.Bold;
-        style.normal.textColor = Color.yellow;
-
-        GUILayout.Label(string.Format("Main speed: {0:0.000} ({1:0.#}, {2:0.#}, {3:0.#})", mainVelocity.magnitude, mainVelocity.x, mainVelocity.y, mainVelocity.z), style);
-        //GUILayout.Label(string.Format("LWheel speed: {0:0.000} ({1:0.#}, {2:0.#}, {3:0.#})", leftVelocity.magnitude, leftVelocity.x, leftVelocity.y, leftVelocity.z), style);
-        //GUILayout.Label(string.Format("RWheel speed: {0:0.000} ({1:0.#}, {2:0.#}, {3:0.#})", rightVelocity.magnitude, rightVelocity.x, rightVelocity.y, rightVelocity.z), style);
+        public float GetLinearSpeed() {
+            return Vector3.Dot(_model.Rigidbody.velocity, _view.transform.forward);
+        }
     }
 }

@@ -1,7 +1,5 @@
-﻿using LuftSchloss.Core;
-using LuftSchloss.Events;
-
-namespace Luderia.Game.MVC.Controllers {
+﻿
+namespace LuftSchloss.Core {
     public class LuftController : LuftObject {
         public override int Priority {
             get {

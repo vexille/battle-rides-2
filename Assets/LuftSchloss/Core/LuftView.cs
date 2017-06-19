@@ -1,6 +1,6 @@
 ﻿using LuftSchloss.Core;
 
-namespace LuftSchloss.MVC.Views {
+namespace LuftSchloss.Core {
     public class LuftView : LuftMonobehaviour {
         public override int Priority {
             get {

@@ -1,19 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
+using LuftSchloss.Core;
 
 namespace Luderia.BattleRides2 {
-    public class CameraFollow : MonoBehaviour {
-        public Transform Target;
+    public class CameraFollow : LuftMonobehaviour {    
         public float FollowVelocity;
 
+        private Transform _target;
         private Vector3 _distanceOffset;
-        private void Start() {
-            _distanceOffset = Target.position - transform.position;
+
+        public void SetTarget(Transform target) {
+            _target = target;
+            _distanceOffset = _target.position - transform.position;
         }
 
-        private void Update() {
+        public override void OnUpdate() {
+            base.OnUpdate();
+
+            if (_target == null) return;
+
             var fakePosition = transform.position + _distanceOffset;
-            var targetDirection = (Target.transform.position - fakePosition);
+            var targetDirection = (_target.transform.position - fakePosition);
 
             float interpVelocity = targetDirection.magnitude * FollowVelocity;
 
