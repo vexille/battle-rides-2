@@ -15,4 +15,4 @@ MonoBehaviour:
   _topSpeedReverse: 10
   _acceleration: 25
   _reverseAcceleration: 35
-  MaxTurningAngle: 15
+  MaxTurningAngle: 33.7

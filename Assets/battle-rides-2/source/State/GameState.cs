@@ -48,10 +48,6 @@ namespace Luderia.BattleRides2.States {
             AddChild(carController.View);
 
             _allCars.Add(carController);
-
-            // TODO: remover isso quando tiver a arena
-            CameraFollow cam = FindChild<CameraFollow>();
-            cam.SetTarget(carController.View.transform);
         }
 
         public override void OnUpdate() {
