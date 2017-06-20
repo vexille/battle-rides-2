@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f3a425a552b30b458836e0cd8ca6923, type: 3}
   m_Name: ViperData
   m_EditorClassIdentifier: 
-  TopSpeed: 20
-  TopSpeedReverse: 15
-  Acceleration: 100
-  ReverseAcceleration: 100
+  TopSpeed: 25
+  TopSpeedReverse: 20
+  Acceleration: 150
+  ReverseAcceleration: 150
   MaxTurningAngle: 15

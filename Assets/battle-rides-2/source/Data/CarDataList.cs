@@ -8,14 +8,14 @@ using UnityEditorInternal;
 
 namespace Luderia.BattleRides2.Data {
     [System.Serializable]
-    public class CarPrefabDataPair {
+    public class CarData {
         public GameObject Prefab;
-        public CarBalanceData Data;
+        public CarBalance Data;
     }
 
     [CreateAssetMenu(menuName = "BattleRides/Car Data List", fileName = "CarDataList")]
     public class CarDataList : ScriptableObject {
-        public List<CarPrefabDataPair> CarList;
+        public List<CarData> CarList;
     }
 
 #if UNITY_EDITOR

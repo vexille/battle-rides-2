@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace Luderia.BattleRides2.Cars {
     public class CarController : LuftController {
-        private CarBalanceData _carData;
+        private CarBalance _carData;
         private CarView _view;
         private CarModel _model;
 
         public CarView View { get { return _view; } }
 
-        public void InitializeCar(CarPrefabDataPair carData, Vector3 position, Quaternion rotation) {
+        public void InitializeCar(CarData carData, Vector3 position, Quaternion rotation) {
             _carData = carData.Data;
             _view = GameObject.Instantiate(carData.Prefab, position, rotation).GetComponent<CarView>();
 
@@ -38,13 +38,19 @@ namespace Luderia.BattleRides2.Cars {
 
             // Handle speed update
             if (_model.AccelInput > 0) {
-                _model.CurrentSpeed = Mathf.Min(_model.CurrentSpeed + _carData.Acceleration, _carData.TopSpeed * 100f);
+                _model.CurrentSpeed = Mathf.Min(
+                    _model.CurrentSpeed + _carData.Acceleration, 
+                    _carData.TopSpeed);
             } else {
-                _model.CurrentSpeed = Mathf.Max(_model.CurrentSpeed - _carData.ReverseAcceleration, -_carData.TopSpeedReverse * 100f);
+                _model.CurrentSpeed = Mathf.Max(
+                    _model.CurrentSpeed - _carData.ReverseAcceleration, 
+                    -_carData.TopSpeedReverse);
             }
             
             // Inverts angle when reversing
-            _model.SteeringInput *= _model.AccelInput;
+            if (_model.CurrentSpeed < 0f) {
+                _model.SteeringInput *= _model.AccelInput;
+            }
 
             //_model.CurrentSpeed = _carData.TopSpeed * 100f * Input.GetAxis("Vertical");
             _model.SteeringAngle = _carData.MaxTurningAngle * _model.SteeringInput;
@@ -52,6 +58,8 @@ namespace Luderia.BattleRides2.Cars {
 
         public override void OnFixedUpdate() {
             base.OnFixedUpdate();
+
+            UpdateFriction();
 
             var steeringDirection = _view.Steering.forward;
             var leftForce = steeringDirection * _model.CurrentSpeed;
@@ -61,6 +69,7 @@ namespace Luderia.BattleRides2.Cars {
             _view.FrontRightWheel.AddForce(rightForce);
 
             _view.DrawDebugLines(leftForce, rightForce);
+
             UpdateFriction();
         }
 

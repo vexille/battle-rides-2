@@ -1,6 +1,7 @@
 ﻿using Luderia.BattleRides2.Cars;
 using Luderia.BattleRides2.Data;
 using LuftSchloss;
+using LuftSchloss.Util;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,13 +15,15 @@ namespace Luderia.BattleRides2.States {
 
         [SerializeField]
         private CarDataList _carDataList;
+        private ShuffleBag<CarData> _carShuffleBag;
 
         public override void Initialize() {
             base.Initialize();
 
-            // TODO: remover isso quando tiver a arena
-            //CameraFollow cam = FindChild<CameraFollow>();
-            //bool camInit = false;
+            _carShuffleBag = new ShuffleBag<CarData>();
+            for (int i = 0; i < _carDataList.CarList.Count; i++) {
+                _carShuffleBag.Add(_carDataList.CarList[i]);
+            }
 
             CarSpawnPoint[] spawnPoints = GameObject.FindObjectsOfType<CarSpawnPoint>();
             for (int i = 0; i < spawnPoints.Length; i++) {
@@ -28,14 +31,12 @@ namespace Luderia.BattleRides2.States {
                 CreateCarAt(currentPoint);
 
                 GameObject.Destroy(currentPoint.gameObject);
-            }            
+            }
         }
 
         private void CreateCarAt(CarSpawnPoint spawnPoint) {
             var carController = AddChild<CarController>();
-
-            var carData = _carDataList.CarList[0];
-            carController.InitializeCar(carData, spawnPoint.transform.position, spawnPoint.transform.rotation);
+            carController.InitializeCar(_carShuffleBag.Next(), spawnPoint.transform.position, spawnPoint.transform.rotation);
 
             AddChild(carController.View);
 
