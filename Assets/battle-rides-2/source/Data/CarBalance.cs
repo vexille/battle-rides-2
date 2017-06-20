@@ -21,8 +21,8 @@ namespace Luderia.BattleRides2.Data {
 
         private const float _inGameSpeedScale = 100f;
 
-        public float TopSpeed { get { return _topSpeed * _inGameSpeedScale; } }
-        public float TopSpeedReverse { get { return _topSpeedReverse * _inGameSpeedScale; } }
+        public float TopSpeed { get { return _topSpeed; } }
+        public float TopSpeedReverse { get { return _topSpeedReverse; } }
         public float Acceleration { get { return _acceleration * _inGameSpeedScale; } }
         public float ReverseAcceleration { get { return _reverseAcceleration * _inGameSpeedScale; } }
 

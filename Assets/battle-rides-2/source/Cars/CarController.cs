@@ -48,17 +48,17 @@ namespace Luderia.BattleRides2.Cars {
                 //    _model.CurrentSpeed + _carData.Acceleration, 
                 //    _carData.TopSpeed);
 
-                _model.CurrentSpeed = _carData.Acceleration;
+                _model.CurrentAccel = _carData.Acceleration;
             } else {
                 //_model.CurrentSpeed = Mathf.Max(
                 //    _model.CurrentSpeed - _carData.ReverseAcceleration, 
                 //    -_carData.TopSpeedReverse);
 
-                _model.CurrentSpeed = -_carData.ReverseAcceleration;
+                _model.CurrentAccel = -_carData.ReverseAcceleration;
             }
             
             // Inverts angle when reversing
-            if (_model.CurrentSpeed < 0f) {
+            if (_model.CurrentAccel < 0f) {
                 _model.SteeringInput *= _model.AccelInput;
             }
 
@@ -69,14 +69,21 @@ namespace Luderia.BattleRides2.Cars {
         public override void OnFixedUpdate() {
             base.OnFixedUpdate();
 
-            var steeringDirection = _view.Steering.forward;
-            var leftForce = steeringDirection * _model.CurrentSpeed;
-            var rightForce = steeringDirection * _model.CurrentSpeed;
+            float currentSpeed = GetForwardVelocity().magnitude;
+            bool shouldAddForce = false;
+            if (_model.CurrentAccel > 0f && currentSpeed < _carData.TopSpeed) shouldAddForce = true;
+            if (_model.CurrentAccel < 0f && currentSpeed < _carData.TopSpeedReverse) shouldAddForce = true;
 
-            _view.FrontLeftWheel.AddForce(leftForce);
-            _view.FrontRightWheel.AddForce(rightForce);
+            if (shouldAddForce) {
+                var steeringDirection = _view.Steering.forward;
+                var leftForce = steeringDirection * _model.CurrentAccel;
+                var rightForce = steeringDirection * _model.CurrentAccel;
 
-            _view.DrawDebugLines(leftForce, rightForce);
+                _view.FrontLeftWheel.AddForce(leftForce);
+                _view.FrontRightWheel.AddForce(rightForce);
+
+                _view.DrawDebugLines(leftForce, rightForce);
+            }
 
             UpdateFriction();
         }

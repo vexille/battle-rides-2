@@ -3,7 +3,7 @@
 namespace Luderia.BattleRides2.Cars {
     [System.Serializable]
     public class CarModel {
-        public float CurrentSpeed;
+        public float CurrentAccel;
         public float SteeringAngle;
         public Rigidbody Rigidbody;
 
