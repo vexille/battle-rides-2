@@ -11,6 +11,8 @@ namespace Luderia.BattleRides2.Cars {
 
         public CarModel Model;
         private Rigidbody _rigidbody;
+
+        public int CarIndex { get; set; }
         private void Awake() {
             _rigidbody = GetComponent<Rigidbody>();
         }
@@ -36,8 +38,10 @@ namespace Luderia.BattleRides2.Cars {
                 GUIStyle style = new GUIStyle();
                 style.fontStyle = FontStyle.Bold;
                 style.normal.textColor = Color.yellow;
-
-                GUILayout.Label(string.Format("Main speed: {0:0.000} ({1:0.#}, {2:0.#}, {3:0.#})", mainVelocity.magnitude, mainVelocity.x, mainVelocity.y, mainVelocity.z), style);
+                for (int i = 0; i < CarIndex; i++) {
+                    GUILayout.Space(15f);
+                }
+                GUILayout.Label("Car " + CarIndex + string.Format(" speed: {0:0.000} ({1:0.#}, {2:0.#}, {3:0.#})", mainVelocity.magnitude, mainVelocity.x, mainVelocity.y, mainVelocity.z), style);
             }
         }
     }

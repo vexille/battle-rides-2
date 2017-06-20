@@ -20,33 +20,39 @@ namespace Luderia.BattleRides2.Cars {
             _view.Model = _model;
         }
 
+        public void HandleInput(bool reversing, int steering) {
+            _model.AccelInput = reversing ? -1 : 1;
+            _model.SteeringInput = steering;
+        }
+
         public override void OnUpdate() {
             base.OnUpdate();
 
-            { // TODO: Tacar isso no controle de input
-                _model.AccelInput = Input.GetKey(KeyCode.S) ? -1 : 1;
+            // Descomentar se por acaso vc quiser que todos os carros tenham o mesmo input
+            //{
+            //    _model.AccelInput = Input.GetKey(KeyCode.S) ? -1 : 1;
 
-                if (Input.GetKey(KeyCode.A)) {
-                    _model.SteeringInput = -1;
-                } else
-                if (Input.GetKey(KeyCode.D)) {
-                    _model.SteeringInput = 1;
-                } else {
-                    _model.SteeringInput = 0;
-                }
-            }
+            //    if (Input.GetKey(KeyCode.A)) {
+            //        _model.SteeringInput = -1;
+            //    } else
+            //    if (Input.GetKey(KeyCode.D)) {
+            //        _model.SteeringInput = 1;
+            //    } else {
+            //        _model.SteeringInput = 0;
+            //    }
+            //}
 
             // Handle speed update
             if (_model.AccelInput > 0) {
-                _model.CurrentSpeed = Mathf.Min(
-                    _model.CurrentSpeed + _carData.Acceleration, 
-                    _carData.TopSpeed);
+                //_model.CurrentSpeed = Mathf.Min(
+                //    _model.CurrentSpeed + _carData.Acceleration, 
+                //    _carData.TopSpeed);
 
                 _model.CurrentSpeed = _carData.Acceleration;
             } else {
-                _model.CurrentSpeed = Mathf.Max(
-                    _model.CurrentSpeed - _carData.ReverseAcceleration, 
-                    -_carData.TopSpeedReverse);
+                //_model.CurrentSpeed = Mathf.Max(
+                //    _model.CurrentSpeed - _carData.ReverseAcceleration, 
+                //    -_carData.TopSpeedReverse);
 
                 _model.CurrentSpeed = -_carData.ReverseAcceleration;
             }

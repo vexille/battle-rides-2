@@ -17,9 +17,13 @@ namespace Luderia.BattleRides2.States {
         private CarDataList _carDataList;
         private ShuffleBag<CarData> _carShuffleBag;
 
+        // Car input controller?
+        private List<CarController> _allCars;
+
         public override void Initialize() {
             base.Initialize();
 
+            _allCars = new List<CarController>();
             _carShuffleBag = new ShuffleBag<CarData>();
             for (int i = 0; i < _carDataList.CarList.Count; i++) {
                 _carShuffleBag.Add(_carDataList.CarList[i]);
@@ -31,6 +35,9 @@ namespace Luderia.BattleRides2.States {
                 CreateCarAt(currentPoint);
 
                 GameObject.Destroy(currentPoint.gameObject);
+
+                // oh god this is so ugly
+                _allCars[_allCars.Count - 1].View.CarIndex = i;
             }
         }
 
@@ -40,9 +47,31 @@ namespace Luderia.BattleRides2.States {
 
             AddChild(carController.View);
 
+            _allCars.Add(carController);
+
             // TODO: remover isso quando tiver a arena
             CameraFollow cam = FindChild<CameraFollow>();
             cam.SetTarget(carController.View.transform);
+        }
+
+        public override void OnUpdate() {
+            if (_allCars.Count >= 1) {
+                int steering = 0;
+                if (Input.GetKey(KeyCode.A)) steering = -1;
+                else if (Input.GetKey(KeyCode.D)) steering = 1;
+
+                _allCars[0].HandleInput(Input.GetKeyDown(KeyCode.S), steering);
+            }
+
+            if (_allCars.Count >= 2) {
+                int steering = 0;
+                if (Input.GetKey(KeyCode.LeftArrow)) steering = -1;
+                else if (Input.GetKey(KeyCode.RightArrow)) steering = 1;
+
+                _allCars[1].HandleInput(Input.GetKeyDown(KeyCode.DownArrow), steering);
+            }
+
+            base.OnUpdate();
         }
     }
 }
