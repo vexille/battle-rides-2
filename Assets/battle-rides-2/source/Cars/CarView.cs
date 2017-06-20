@@ -11,7 +11,6 @@ namespace Luderia.BattleRides2.Cars {
 
         public CarModel Model;
         private Rigidbody _rigidbody;
-
         private void Awake() {
             _rigidbody = GetComponent<Rigidbody>();
         }

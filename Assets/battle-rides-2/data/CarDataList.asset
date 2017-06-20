@@ -14,5 +14,3 @@ MonoBehaviour:
   CarList:
   - Prefab: {fileID: 1158315899361162, guid: a3d908a377722ba4ab73cc0f7d9747f8, type: 2}
     Data: {fileID: 11400000, guid: b75c1f765df3ab74ea1d8779c53fc0cd, type: 2}
-  - Prefab: {fileID: 1880141636401492, guid: a476e12284099de41915b8589383124f, type: 2}
-    Data: {fileID: 11400000, guid: 6bcf12017a0870d4c9b548efc6b1f8fa, type: 2}

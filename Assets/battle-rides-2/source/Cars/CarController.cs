@@ -41,10 +41,14 @@ namespace Luderia.BattleRides2.Cars {
                 _model.CurrentSpeed = Mathf.Min(
                     _model.CurrentSpeed + _carData.Acceleration, 
                     _carData.TopSpeed);
+
+                _model.CurrentSpeed = _carData.Acceleration;
             } else {
                 _model.CurrentSpeed = Mathf.Max(
                     _model.CurrentSpeed - _carData.ReverseAcceleration, 
                     -_carData.TopSpeedReverse);
+
+                _model.CurrentSpeed = -_carData.ReverseAcceleration;
             }
             
             // Inverts angle when reversing
@@ -58,8 +62,6 @@ namespace Luderia.BattleRides2.Cars {
 
         public override void OnFixedUpdate() {
             base.OnFixedUpdate();
-
-            UpdateFriction();
 
             var steeringDirection = _view.Steering.forward;
             var leftForce = steeringDirection * _model.CurrentSpeed;
@@ -76,11 +78,22 @@ namespace Luderia.BattleRides2.Cars {
         private void UpdateFriction() {
             Vector3 impulse = _model.Rigidbody.mass * -GetLateralVelocity();
             _model.Rigidbody.AddForce(impulse, ForceMode.Impulse);
+
+            //_model.Rigidbody.AddTorque(0.1f * _model.Rigidbody.inertiaTensor.magnitude * -_model.Rigidbody.angularVelocity, ForceMode.Impulse);
+            Vector3 currentForward = GetForwardVelocity();
+            float currentForwardSpeed = currentForward.magnitude;
+            float dragForceMagnitude = -2 * currentForwardSpeed;
+            _model.Rigidbody.AddForce(dragForceMagnitude * currentForward, ForceMode.Force);
         }
 
         private Vector3 GetLateralVelocity() {
             var rightNormal = _view.transform.right;
             return Vector3.Dot(rightNormal, _model.Rigidbody.velocity) * rightNormal;
+        }
+
+        private Vector3 GetForwardVelocity() {
+            var forwardNormal = _view.transform.forward;
+            return Vector3.Dot(forwardNormal, _model.Rigidbody.velocity) * forwardNormal;
         }
 
         public float GetLinearSpeed() {

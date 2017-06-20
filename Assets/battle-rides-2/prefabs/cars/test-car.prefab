@@ -563,7 +563,7 @@ MonoBehaviour:
   Steering: {fileID: 4096566566850214}
   FrontLeftWheel: {fileID: 54021837543448652}
   FrontRightWheel: {fileID: 54738515262529268}
-  DebugText: 0
+  DebugText: 1
   Model:
     CurrentSpeed: 0
     SteeringAngle: 0
