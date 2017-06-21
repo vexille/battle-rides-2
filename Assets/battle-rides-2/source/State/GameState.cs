@@ -48,10 +48,6 @@ namespace Luderia.BattleRides2.States {
             AddChild(carController.View);
 
             _allCars.Add(carController);
-
-            // TODO: remover isso quando tiver a arena
-            CameraFollow cam = FindChild<CameraFollow>();
-            cam.SetTarget(carController.View.transform);
         }
 
         public override void OnUpdate() {
@@ -60,7 +56,7 @@ namespace Luderia.BattleRides2.States {
                 if (Input.GetKey(KeyCode.A)) steering = -1;
                 else if (Input.GetKey(KeyCode.D)) steering = 1;
 
-                _allCars[0].HandleInput(Input.GetKeyDown(KeyCode.S), steering);
+                _allCars[0].HandleInput(Input.GetKey(KeyCode.S), steering);
             }
 
             if (_allCars.Count >= 2) {
@@ -68,7 +64,7 @@ namespace Luderia.BattleRides2.States {
                 if (Input.GetKey(KeyCode.LeftArrow)) steering = -1;
                 else if (Input.GetKey(KeyCode.RightArrow)) steering = 1;
 
-                _allCars[1].HandleInput(Input.GetKeyDown(KeyCode.DownArrow), steering);
+                _allCars[1].HandleInput(Input.GetKey(KeyCode.DownArrow), steering);
             }
 
             base.OnUpdate();
