@@ -22,6 +22,7 @@ namespace Luderia.BattleRides2.Cars {
 
         public void HandleInput(bool reversing, int steering) {
             _model.AccelInput = reversing ? -1 : 1;
+
             _model.SteeringInput = steering;
         }
 
@@ -49,12 +50,14 @@ namespace Luderia.BattleRides2.Cars {
                 //    _carData.TopSpeed);
 
                 _model.CurrentAccel = _carData.Acceleration;
+
             } else {
                 //_model.CurrentSpeed = Mathf.Max(
                 //    _model.CurrentSpeed - _carData.ReverseAcceleration, 
                 //    -_carData.TopSpeedReverse);
 
                 _model.CurrentAccel = -_carData.ReverseAcceleration;
+
             }
             
             // Inverts angle when reversing
