@@ -33,6 +33,10 @@ namespace LuftSchloss.Core {
             return (T)_children.Listeners.Find(x => x is T);
         }
 
+        public void RemoveChild(ILuftObject child) {
+            _children.Listeners.Remove(child);
+        }
+
         public virtual void Initialize() {
             _children.Initialize();
             _initialized = true;
