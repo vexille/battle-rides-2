@@ -1,5 +1,6 @@
 ﻿using Luderia.BattleRides2.Cars;
 using Luderia.BattleRides2.Data;
+using Luderia.BattleRides2.Powerups;
 using LuftSchloss;
 using LuftSchloss.Util;
 using System.Collections;
@@ -13,7 +14,7 @@ namespace Luderia.BattleRides2.States {
         }
 
         [SerializeField]
-        private CarDataList _carDataList;
+        private GameBalanceData _balanceData;
         private ShuffleBag<CarData> _carShuffleBag;
 
         // Car input controller?
@@ -24,8 +25,8 @@ namespace Luderia.BattleRides2.States {
 
             _allCars = new List<CarController>();
             _carShuffleBag = new ShuffleBag<CarData>();
-            for (int i = 0; i < _carDataList.CarList.Count; i++) {
-                _carShuffleBag.Add(_carDataList.CarList[i]);
+            for (int i = 0; i < _balanceData.CarList.CarList.Count; i++) {
+                _carShuffleBag.Add(_balanceData.CarList.CarList[i]);
             }
 
             CarSpawnPoint[] spawnPoints = GameObject.FindObjectsOfType<CarSpawnPoint>();
@@ -36,8 +37,9 @@ namespace Luderia.BattleRides2.States {
                 GameObject.Destroy(currentPoint.gameObject);
             }
 
-            StartCoroutine(DelayedStart());
-            Debug.Log("Wait...");
+            StartCoroutine(StartCountdown());
+            var powerupManager = AddChild<PowerupManager>();
+            powerupManager.SetBalanceData(_balanceData.PowerupData);
         }
 
         private void CreateCarAt(CarSpawnPoint spawnPoint, int index) {
@@ -98,8 +100,14 @@ namespace Luderia.BattleRides2.States {
             _allCars[index] = null;
         }
 
-        private IEnumerator DelayedStart() {
-            yield return new WaitForSeconds(1.5f);
+        private IEnumerator StartCountdown() {
+            Debug.Log("Start your engines!");
+            Debug.Log("3...");
+            yield return new WaitForSeconds(1f);
+            Debug.Log("2...");
+            yield return new WaitForSeconds(1f);
+            Debug.Log("1...");
+            yield return new WaitForSeconds(1f);
             StartState();
             Debug.Log("Go!");
         }

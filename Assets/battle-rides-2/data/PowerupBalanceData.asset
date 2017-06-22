@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6e13aa1ac768bb44808500b47acd7f3, type: 3}
+  m_Name: PowerupBalanceData
+  m_EditorClassIdentifier: 
+  PowerupSpawnInterval: 2
+  MaxActivePowerupPickups: 2
+  PowerupWeights:
+  - Type: 0
+    Weight: 1
+  MissileDamage: 10
+  MissileSpeed: 10
