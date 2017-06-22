@@ -2,6 +2,7 @@
 using Luderia.BattleRides2.Data;
 using LuftSchloss;
 using LuftSchloss.Util;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,6 +35,9 @@ namespace Luderia.BattleRides2.States {
 
                 GameObject.Destroy(currentPoint.gameObject);
             }
+
+            StartCoroutine(DelayedStart());
+            Debug.Log("Wait...");
         }
 
         private void CreateCarAt(CarSpawnPoint spawnPoint, int index) {
@@ -92,6 +96,12 @@ namespace Luderia.BattleRides2.States {
             RemoveChild(_allCars[index]);
             _allCars[index].Die();
             _allCars[index] = null;
+        }
+
+        private IEnumerator DelayedStart() {
+            yield return new WaitForSeconds(1.5f);
+            StartState();
+            Debug.Log("Go!");
         }
     }
 }

@@ -45,6 +45,10 @@ namespace LuftSchloss.Core {
             _initialized = true;
         }
 
+        public virtual void LateInitialize() {
+            _children.LateInitialize();
+        }
+
         public virtual void OnStartState() {
             _children.OnStartState();
         }
