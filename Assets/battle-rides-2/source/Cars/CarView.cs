@@ -1,4 +1,5 @@
 ﻿using Luderia.BattleRides2.Data;
+using Luderia.BattleRides2.Powerups;
 using LuftSchloss.Core;
 using UnityEngine;
 
@@ -13,6 +14,9 @@ namespace Luderia.BattleRides2.Cars {
         private Rigidbody _rigidbody;
 
         public int CarIndex { get; set; }
+
+        public CarController Controller { get; set; }
+
         private void Awake() {
             _rigidbody = GetComponent<Rigidbody>();
         }
@@ -42,6 +46,20 @@ namespace Luderia.BattleRides2.Cars {
                     GUILayout.Space(15f);
                 }
                 GUILayout.Label("Car " + CarIndex + string.Format(" speed: {0:0.000} ({1:0.#}, {2:0.#}, {3:0.#})", mainVelocity.magnitude, mainVelocity.x, mainVelocity.y, mainVelocity.z), style);
+            }
+        }
+
+        private void OnCollisionEnter(Collision collision) {
+            var damageInflictor = collision.gameObject.GetComponent<DamageInflictor>();
+            if (damageInflictor != null) {
+                Controller.TakeDamage(damageInflictor.Damage);
+            }
+        }
+
+        private void OnTriggerEnter(Collider other) {
+            var damageInflictor = other.gameObject.GetComponent<DamageInflictor>();
+            if (damageInflictor != null) {
+                Controller.TakeDamage(damageInflictor.Damage);
             }
         }
     }

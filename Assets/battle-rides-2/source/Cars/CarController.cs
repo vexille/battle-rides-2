@@ -28,6 +28,7 @@ namespace Luderia.BattleRides2.Cars {
             _model.Rigidbody = _view.GetComponent<Rigidbody>();
             _model.CurrentHealth = _carData.MaxHealth;
 
+            _view.Controller = this;
             _view.Model = _model;
             _view.CarIndex = _index;
 
