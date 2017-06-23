@@ -1,4 +1,5 @@
-﻿using Luderia.BattleRides2.Data;
+﻿using Frictionless;
+using Luderia.BattleRides2.Data;
 using Luderia.BattleRides2.Util;
 using LuftSchloss;
 using LuftSchloss.Core;
@@ -7,7 +8,8 @@ using System.Collections;
 using UnityEngine;
 
 namespace Luderia.BattleRides2.Powerups {
-    public class PowerupManager : LuftController {
+    public class PowerupManager : LuftMonobehaviour {
+        [SerializeField]
         private PowerupBalanceData _balance;
 
         private ShuffleBag<PowerupSpawnPoint> _spawnShuffleBag;
@@ -22,11 +24,13 @@ namespace Luderia.BattleRides2.Powerups {
             _spawnShuffleBag = new ShuffleBag<PowerupSpawnPoint>();
             var spawnPoints = GameObject.FindObjectsOfType<PowerupSpawnPoint>();
             if (spawnPoints.Length == 0) {
-                Debug.LogError("No powerup spawns in the scene!");
+                Debug.LogError("[PowerupManager] No powerup spawns in the scene!");
             }
             for (int i = 0; i < spawnPoints.Length; i++) {
                 _spawnShuffleBag.Add(spawnPoints[i]);
             }
+
+            InstanceBinder.Get<MessageRouter>().AddHandler<OnPowerupPickedUp>(message => _activePowerups--);
         }
 
         public override void LateInitialize() {
@@ -51,7 +55,8 @@ namespace Luderia.BattleRides2.Powerups {
             var spawnPoint = _spawnShuffleBag.Next();
             var powerup = _powerupShuffleBag.Next();
 
-            Debug.Log("Spawn powerup " + powerup + " at " + spawnPoint.transform.position);
+            var go = GameObject.Instantiate(_balance.PowerupDropPrefab, spawnPoint.transform.position, Quaternion.identity);
+            go.GetComponent<PowerupDrop>().Type = powerup;
             _activePowerups++;
         }
 

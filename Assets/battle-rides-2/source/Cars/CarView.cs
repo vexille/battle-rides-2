@@ -57,9 +57,18 @@ namespace Luderia.BattleRides2.Cars {
         }
 
         private void OnTriggerEnter(Collider other) {
-            var damageInflictor = other.gameObject.GetComponent<DamageInflictor>();
+            var damageInflictor = other.GetComponent<DamageInflictor>();
             if (damageInflictor != null) {
                 Controller.TakeDamage(damageInflictor.Damage);
+                return;
+            }
+
+            var powerupDrop = other.GetComponent<PowerupDrop>();
+            if (powerupDrop != null) {
+                if (Controller.PowerupComp.AddPowerup(powerupDrop.Type)) {
+                    GameObject.Destroy(powerupDrop.gameObject);
+                    return;
+                }
             }
         }
     }

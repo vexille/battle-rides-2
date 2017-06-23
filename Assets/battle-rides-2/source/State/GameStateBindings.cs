@@ -8,6 +8,7 @@ namespace Luderia.BattleRides2.States {
         public void BindInstances() {
             var go = new GameObject("MonoProxy");
             ServiceFactory.Instance.RegisterSingleton<MonoProxy>(go.AddComponent<MonoProxy>());
+            ServiceFactory.Instance.RegisterSingleton<MessageRouter>();
         }
     }
 }

@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e13aa1ac768bb44808500b47acd7f3, type: 3}
   m_Name: PowerupBalanceData
   m_EditorClassIdentifier: 
+  PowerupDropPrefab: {fileID: 1767922142239318, guid: a2a1371459f77e0488bc89ebb32067e1,
+    type: 2}
   PowerupSpawnInterval: 2
   MaxActivePowerupPickups: 2
   PowerupWeights:
-  - Type: 0
+  - Type: 1
     Weight: 1
-  MissileDamage: 10
-  MissileSpeed: 10
