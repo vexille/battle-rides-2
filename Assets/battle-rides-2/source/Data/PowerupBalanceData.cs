@@ -28,10 +28,4 @@ namespace Luderia.BattleRides2.Data {
 
         public List<PowerupWeight> PowerupWeights;
     }
-
-    [CreateAssetMenu(menuName = "BattleRides/Missile Balance Data", fileName = "MissileBalanceData")]
-    public class MissileBalanceData : ScriptableObject {
-        public float MissileDamage = 10f;
-        public float MissileSpeed = 10f;
-    }
 }

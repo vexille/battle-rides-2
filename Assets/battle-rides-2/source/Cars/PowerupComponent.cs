@@ -15,11 +15,17 @@ namespace Luderia.BattleRides2.Cars {
             for (int i = 0; i < _powerupSlots.Length; i++) {
                 if (_powerupSlots[i] == PowerupType.None) {
                     _powerupSlots[i] = type;
+                    UnityEngine.Debug.Log("Add powerup: " + type + " in slot " + i);
                     return true;
                 }
             }
 
             return false;
+        }
+
+        public void UsePowerup(int slotIndex) {
+            UnityEngine.Debug.Log("Use slot: " + slotIndex + " > " + _powerupSlots[slotIndex]);
+            _powerupSlots[slotIndex] = PowerupType.None;
         }
     }
 }

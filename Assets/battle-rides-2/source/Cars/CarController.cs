@@ -19,6 +19,8 @@ namespace Luderia.BattleRides2.Cars {
 
         public CarView View { get { return _view; } }
 
+        public int CarIndex { get { return _index; } }
+
         public PowerupComponent PowerupComp { get; private set; }
 
         public void InitializeCar(int index, CarData carData, Vector3 position, Quaternion rotation) {
@@ -39,10 +41,12 @@ namespace Luderia.BattleRides2.Cars {
             PowerupComp = AddChild<PowerupComponent>();
         }
 
-        public void HandleInput(bool reversing, int steering) {
+        public void HandleInput(bool reversing, int steering, int usedPowerup) {
             _model.AccelInput = reversing ? -1 : 1;
-
             _model.SteeringInput = steering;
+            if (usedPowerup != -1) {
+                PowerupComp.UsePowerup(usedPowerup);
+            }
         }
 
         public void TakeDamage(float damage) {

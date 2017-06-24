@@ -64,9 +64,9 @@ namespace Luderia.BattleRides2.Cars {
             }
 
             var powerupDrop = other.GetComponent<PowerupDrop>();
-            if (powerupDrop != null) {
+            if (powerupDrop != null && !powerupDrop.Consumed) {
                 if (Controller.PowerupComp.AddPowerup(powerupDrop.Type)) {
-                    GameObject.Destroy(powerupDrop.gameObject);
+                    powerupDrop.Consume();
                     return;
                 }
             }

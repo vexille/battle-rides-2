@@ -1,14 +1,14 @@
 ﻿using Frictionless;
 using Luderia.BattleRides2.Data;
 using LuftSchloss;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Luderia.BattleRides2.Powerups {
     public class PowerupDrop : MonoBehaviour {
         private PowerupType _powerupType;
         private SpriteRenderer _sprite;
+
+        public bool Consumed { get; private set; }
 
         public PowerupType Type { 
             get { return _powerupType; }
@@ -45,6 +45,11 @@ namespace Luderia.BattleRides2.Powerups {
                 default:
                     break;
             }
+        }
+
+        public void Consume() {
+            Consumed = true;
+            Destroy(gameObject);
         }
 
         private void OnDestroy() {
