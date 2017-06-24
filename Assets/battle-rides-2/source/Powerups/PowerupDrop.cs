@@ -8,6 +8,8 @@ namespace Luderia.BattleRides2.Powerups {
         private PowerupType _powerupType;
         private SpriteRenderer _sprite;
 
+        public int SpawnPointIndex;
+
         public bool Consumed { get; private set; }
 
         public PowerupType Type { 
@@ -55,7 +57,7 @@ namespace Luderia.BattleRides2.Powerups {
         private void OnDestroy() {
             var messageRouter = InstanceBinder.Get<MessageRouter>();
             if (messageRouter != null) {
-                messageRouter.RaiseMessage(new OnPowerupPickedUp());
+                messageRouter.RaiseMessage(new OnPowerupPickedUp { SpawnPointIndex = SpawnPointIndex });
             }
         }
     }

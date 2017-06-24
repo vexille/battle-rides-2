@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Luderia.BattleRides2 {
     public class OnPowerupPickedUp {
-
+        public int SpawnPointIndex;
     }
 
     public class CarCreated {
