@@ -685,7 +685,7 @@ GameObject:
   - component: {fileID: 540365843}
   - component: {fileID: 540365842}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -729,7 +729,7 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 540365841}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: acfbebcb277158c4c96c0dd6427e3982, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -947,7 +947,7 @@ GameObject:
   - component: {fileID: 973491829}
   - component: {fileID: 973491828}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -991,7 +991,7 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 973491827}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: acfbebcb277158c4c96c0dd6427e3982, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1121,7 +1121,7 @@ GameObject:
   - component: {fileID: 1709617162}
   - component: {fileID: 1709617161}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1165,7 +1165,7 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1709617160}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: acfbebcb277158c4c96c0dd6427e3982, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1203,7 +1203,7 @@ GameObject:
   - component: {fileID: 1905930259}
   - component: {fileID: 1905930258}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1247,7 +1247,7 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1905930257}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: acfbebcb277158c4c96c0dd6427e3982, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

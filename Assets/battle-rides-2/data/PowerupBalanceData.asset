@@ -28,3 +28,8 @@ MonoBehaviour:
     Weight: 8
   - Type: 6
     Weight: 4
+  PowerupPrefabs:
+    MissilePrefab: {fileID: 1310167822364004, guid: ef3638f4644f3e7429929aa33e32f3f0,
+      type: 2}
+    BulletPrefab: {fileID: 0}
+    MinePrefab: {fileID: 0}
