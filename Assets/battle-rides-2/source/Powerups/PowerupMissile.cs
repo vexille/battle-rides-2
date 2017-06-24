@@ -17,8 +17,16 @@ namespace Luderia.BattleRides2.Powerups {
             GetComponent<DamageInflictor>().Damage = _balance.Damage;
         }
 
-        private void Update() {
-            _rigidbody.AddForce(transform.forward * _balance.Speed, ForceMode.Impulse);
+        private void FixedUpdate() {
+            Vector3 currentVelocity = _rigidbody.velocity;
+            float currentSpeed = currentVelocity.magnitude;
+            float speedChange = _balance.Speed - currentSpeed;
+            if (speedChange <= 0f) {
+                return;
+            }
+
+            _rigidbody.AddForce(transform.forward * speedChange, ForceMode.Impulse);
+            Debug.Log("Speed: " + _rigidbody.velocity.magnitude);
         }
     }
 }

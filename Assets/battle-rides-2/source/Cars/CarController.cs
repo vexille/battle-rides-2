@@ -33,12 +33,13 @@ namespace Luderia.BattleRides2.Cars {
             _model.CurrentHealth = _carData.MaxHealth;
 
             _view.Controller = this;
-            _view.Model = _model;
             _view.CarIndex = _index;
+            _view.Model = _model;
 
             _movement = new MovementComponent(_model, _view, _carData);
             AddChild(_movement);
             PowerupComp = AddChild<PowerupComponent>();
+            PowerupComp.Owner = this;
         }
 
         public void HandleInput(bool reversing, int steering, int usedPowerup) {

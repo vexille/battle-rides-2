@@ -8,19 +8,15 @@ namespace Luderia.BattleRides2.InputHandling {
     public class InputManager : LuftMonobehaviour {
         [SerializeField]
         private InputMapping _mapping;
-        private Dictionary<int, IInputHandler> _playerInputHandlers;
-        private Dictionary<int, CarController> _playerControllers;
-        private List<int> _activeCars;
+        private Dictionary<int, IInputHandler> _playerInputHandlers = new Dictionary<int, IInputHandler>();
+        private Dictionary<int, CarController> _playerControllers = new Dictionary<int, CarController>();
+        private List<int> _activeCars = new List<int>();
 
         public override void Initialize() {
             base.Initialize();
 
-            _playerInputHandlers = new Dictionary<int, IInputHandler>();
             _playerInputHandlers.Add(0, new KeyboardInputHandler(_mapping.P1KeyboardMapping));
             _playerInputHandlers.Add(1, new KeyboardInputHandler(_mapping.P2KeyboardMapping));
-
-            _playerControllers = new Dictionary<int, CarController>();
-            _activeCars = new List<int>();
         }
 
         public void AddPlayerController(CarController controller) {

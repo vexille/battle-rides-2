@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: MissileBalanceData
   m_EditorClassIdentifier: 
   Damage: 10
-  Speed: 10
+  Speed: 40

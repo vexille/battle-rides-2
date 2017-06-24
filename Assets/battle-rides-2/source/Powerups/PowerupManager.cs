@@ -18,6 +18,8 @@ namespace Luderia.BattleRides2.Powerups {
 
         private int _activePowerups;
 
+        public PowerupBalanceData BalanceData { get { return _balance; } }
+
         public override void Initialize() {
             base.Initialize();
 

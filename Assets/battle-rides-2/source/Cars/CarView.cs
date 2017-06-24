@@ -8,6 +8,9 @@ namespace Luderia.BattleRides2.Cars {
         public Transform Steering;
         public Rigidbody FrontLeftWheel;
         public Rigidbody FrontRightWheel;
+        public Rigidbody RearLeftWheel;
+        public Rigidbody RearRightWheel;
+        public Transform MissilePivot;
         public bool DebugText = false;
 
         public CarModel Model;

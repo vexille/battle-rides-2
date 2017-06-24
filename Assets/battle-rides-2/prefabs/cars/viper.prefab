@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 54134320481912260}
   - component: {fileID: 138292619166641876}
   - component: {fileID: 135939889416334430}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RR-tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4666193885005800}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: steering
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 4511426293973224}
   - component: {fileID: 54399623696685932}
   - component: {fileID: 114595689283054644}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: viper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 4543788934329838}
   - component: {fileID: 33379769819241314}
   - component: {fileID: 23064228425638682}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wheel_front_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 4713567124619954}
   - component: {fileID: 33801478150543632}
   - component: {fileID: 23986058299702394}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wheel_front_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4654685030209220}
   - component: {fileID: 65546530565716906}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 4938637925383750}
   - component: {fileID: 33150276731649696}
   - component: {fileID: 23316889618497028}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wheel_back_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 54508628996420950}
   - component: {fileID: 138669655286514352}
   - component: {fileID: 135963801965534180}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FL-tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 4424170903294728}
   - component: {fileID: 33267023966605044}
   - component: {fileID: 23683721673113884}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Viper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 4736697053386538}
   - component: {fileID: 33298685644302226}
   - component: {fileID: 23904444077048244}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wheel_back_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,8 +191,23 @@ GameObject:
   - component: {fileID: 54971100911559240}
   - component: {fileID: 138586757735598920}
   - component: {fileID: 135264469791272312}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FR-tire
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1625968807755330
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4598513299249734}
+  m_Layer: 8
+  m_Name: missile_pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -206,7 +221,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4286453775598978}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tires
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +239,7 @@ GameObject:
   - component: {fileID: 54929323797472124}
   - component: {fileID: 138118885853104890}
   - component: {fileID: 135320011766457206}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RL-tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +289,7 @@ Transform:
   - {fileID: 4061600701678452}
   - {fileID: 4268653508793092}
   m_Father: {fileID: 4511426293973224}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4424170903294728
 Transform:
@@ -287,7 +302,7 @@ Transform:
   m_LocalScale: {x: 1.8319429, y: 1.8319439, z: 1.8319439}
   m_Children: []
   m_Father: {fileID: 4511426293973224}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 90.00001}
 --- !u!4 &4511426293973224
 Transform:
@@ -299,6 +314,7 @@ Transform:
   m_LocalPosition: {x: -1.8, y: 0.462, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4598513299249734}
   - {fileID: 4666193885005800}
   - {fileID: 4424170903294728}
   - {fileID: 4654685030209220}
@@ -319,6 +335,19 @@ Transform:
   m_Father: {fileID: 4804171420696008}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4598513299249734
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1625968807755330}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.44, z: 2.81}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4511426293973224}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4654685030209220
 Transform:
   m_ObjectHideFlags: 1
@@ -330,7 +359,7 @@ Transform:
   m_LocalScale: {x: 0.9446762, y: 0.4738122, z: 2.265467}
   m_Children: []
   m_Father: {fileID: 4511426293973224}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4666193885005800
 Transform:
@@ -343,7 +372,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4511426293973224}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4713567124619954
 Transform:
@@ -708,6 +737,9 @@ MonoBehaviour:
   Steering: {fileID: 4666193885005800}
   FrontLeftWheel: {fileID: 54508628996420950}
   FrontRightWheel: {fileID: 54971100911559240}
+  RearLeftWheel: {fileID: 54929323797472124}
+  RearRightWheel: {fileID: 54134320481912260}
+  MissilePivot: {fileID: 4598513299249734}
   DebugText: 0
   Model:
     CurrentHealth: 0

@@ -3,6 +3,7 @@ using UnityEngine;
 using Frictionless;
 using Luderia.BattleRides2.Util;
 using Luderia.BattleRides2.InputHandling;
+using Luderia.BattleRides2.Powerups;
 
 namespace Luderia.BattleRides2.States {
     public class GameStateBindings : IBindingStrategy {
@@ -11,6 +12,7 @@ namespace Luderia.BattleRides2.States {
             ServiceFactory.Instance.RegisterSingleton<MonoProxy>(go.AddComponent<MonoProxy>());
             ServiceFactory.Instance.RegisterSingleton<MessageRouter>();
             ServiceFactory.Instance.RegisterSingleton<InputManager>(GameObject.FindObjectOfType<InputManager>());
+            ServiceFactory.Instance.RegisterSingleton<PowerupManager>(GameObject.FindObjectOfType<PowerupManager>());
         }
     }
 }

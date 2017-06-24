@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4170834261951732}
   - component: {fileID: 212164067481421170}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4405698592146538}
   - component: {fileID: 114357452802293614}
   - component: {fileID: 135590798727540822}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: powerup_drop
   m_TagString: powerup_drop
   m_Icon: {fileID: 0}
@@ -82,6 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536864b86dd43214eaa570cfa4bc0c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpawnPointIndex: 0
 --- !u!135 &135590798727540822
 SphereCollider:
   m_ObjectHideFlags: 1
