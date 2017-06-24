@@ -15,7 +15,7 @@ namespace Luderia.BattleRides2.Cars {
             base.Initialize();
 
             _powerupSlots = new PowerupType[PowerupBalanceData.MaxPowerupSlots];
-            _prefabs = InstanceBinder.Get<PowerupManager>().BalanceData.PowerupPrefabs;
+            _prefabs = InstanceBinder.Get<PowerupManager>().PowerupPrefabs;
         }
 
         public bool AddPowerup(PowerupType type) {

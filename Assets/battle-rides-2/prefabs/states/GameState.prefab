@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _balance: {fileID: 11400000, guid: 5b649ac4c7c25ca4a8974f9f1310b0c6, type: 2}
+  _prefabs: {fileID: 11400000, guid: b4364e0a06eb3a24eacce039245b4f10, type: 2}
 --- !u!114 &114463768056792408
 MonoBehaviour:
   m_ObjectHideFlags: 1

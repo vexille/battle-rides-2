@@ -18,13 +18,6 @@ namespace Luderia.BattleRides2.Data {
         public int Weight = 1;
     }
 
-    [System.Serializable]
-    public class PowerupPrefabs {
-        public GameObject MissilePrefab;
-        public GameObject BulletPrefab;
-        public GameObject MinePrefab;
-    }
-
     [CreateAssetMenu(menuName = "BattleRides/Powerup Balance Data", fileName = "PowerupBalanceData")]
     public class PowerupBalanceData : ScriptableObject {
         public static int MaxPowerupSlots = 4;
@@ -34,7 +27,5 @@ namespace Luderia.BattleRides2.Data {
         public int MaxActivePowerupPickups = 2;
 
         public List<PowerupWeight> PowerupWeights;
-
-        public PowerupPrefabs PowerupPrefabs;
     }
 }
