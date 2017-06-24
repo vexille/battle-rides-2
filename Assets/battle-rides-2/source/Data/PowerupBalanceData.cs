@@ -35,7 +35,6 @@ namespace Luderia.BattleRides2.Data {
 
         public List<PowerupWeight> PowerupWeights;
 
-        [Header("Powerup Prefabs")]
         public PowerupPrefabs PowerupPrefabs;
     }
 }
