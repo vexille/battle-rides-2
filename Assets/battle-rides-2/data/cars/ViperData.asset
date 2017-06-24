@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: ViperData
   m_EditorClassIdentifier: 
   MaxHealth: 100
-  _topSpeed: 14
-  _topSpeedReverse: 14
+  _topSpeed: 14.5
+  _topSpeedReverse: 14.5
   _acceleration: 25
   _reverseAcceleration: 25
   MaxTurningAngle: 22

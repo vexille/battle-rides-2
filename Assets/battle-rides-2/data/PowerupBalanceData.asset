@@ -17,4 +17,14 @@ MonoBehaviour:
   MaxActivePowerupPickups: 2
   PowerupWeights:
   - Type: 1
-    Weight: 1
+    Weight: 32
+  - Type: 2
+    Weight: 28
+  - Type: 3
+    Weight: 16
+  - Type: 4
+    Weight: 12
+  - Type: 5
+    Weight: 8
+  - Type: 6
+    Weight: 4
