@@ -18,7 +18,7 @@ Shader "Planet/Custom Matcap"
    
     Subshader 
     {
-    	Tags {"RenderType"="Opaque" "LightMode" = "ForwardBase"}		
+    	//Tags {"RenderType"="Opaque" "LightMode" = "ForwardBase"}		
         Pass 
         {
             CGPROGRAM
@@ -27,7 +27,6 @@ Shader "Planet/Custom Matcap"
                 #pragma fragmentoption ARB_precision_hint_fastest
                 #include "UnityCG.cginc"
                 #include "AutoLight.cginc"
-                #pragma glsl_no_auto_normalization
                 #pragma shader_feature VERTCOL_ON
                 #pragma shader_feature FIXEDRIM_ON
                 #pragma shader_feature MATCAP_ON
@@ -151,5 +150,5 @@ Shader "Planet/Custom Matcap"
             ENDCG
         }
     }
-    Fallback "Diffuse"
+    //Fallback "Diffuse"
 }

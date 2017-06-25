@@ -12,5 +12,7 @@ namespace LuftSchloss.Core {
         void AddChild(ILuftObject child);
 
         T FindChild<T>() where T : ILuftObject;
+
+        void RemoveChild(ILuftObject child);
     }
 }

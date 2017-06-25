@@ -1,116 +1,98 @@
 ﻿using Luderia.BattleRides2.Data;
+using LuftSchloss;
 using LuftSchloss.Core;
+using System;
 using UnityEngine;
 
 namespace Luderia.BattleRides2.Cars {
     public class CarController : LuftController {
-        private CarBalance _carData;
+        public event Action<int> OnHealthDepleted;
+        public event Action<int, float> OnHealthChanged;
+
+        private int _index;
+
         private CarView _view;
         private CarModel _model;
+        private CarBalance _carData;
+
+        private MovementComponent _movement;
+        public PowerupComponent PowerupComp { get; private set; }
 
         public CarView View { get { return _view; } }
 
-        public void InitializeCar(CarData carData, Vector3 position, Quaternion rotation) {
+        public int CarIndex { get { return _index; } }
+
+
+        public void InitializeCar(int index, CarData carData, Vector3 position, Quaternion rotation) {
+            _index = index;
             _carData = carData.Data;
             _view = GameObject.Instantiate(carData.Prefab, position, rotation).GetComponent<CarView>();
 
             _model = new CarModel();
             _model.Rigidbody = _view.GetComponent<Rigidbody>();
+            _model.CurrentHealth = _carData.MaxHealth;
 
+            _view.Controller = this;
+            _view.CarIndex = _index;
             _view.Model = _model;
+
+            _movement = new MovementComponent(_model, _view, _carData);
+            AddChild(_movement);
+            PowerupComp = AddChild<PowerupComponent>();
+            PowerupComp.Owner = this;
         }
 
-        public void HandleInput(bool reversing, int steering) {
+        public void HandleInput(bool reversing, int steering, int usedPowerup) {
             _model.AccelInput = reversing ? -1 : 1;
             _model.SteeringInput = steering;
+            if (usedPowerup != -1) {
+                PowerupComp.UsePowerup(usedPowerup);
+            }
         }
 
-        public override void OnUpdate() {
-            base.OnUpdate();
-
-            // Descomentar se por acaso vc quiser que todos os carros tenham o mesmo input
-            //{
-            //    _model.AccelInput = Input.GetKey(KeyCode.S) ? -1 : 1;
-
-            //    if (Input.GetKey(KeyCode.A)) {
-            //        _model.SteeringInput = -1;
-            //    } else
-            //    if (Input.GetKey(KeyCode.D)) {
-            //        _model.SteeringInput = 1;
-            //    } else {
-            //        _model.SteeringInput = 0;
-            //    }
-            //}
-
-            // Handle speed update
-            if (_model.AccelInput > 0) {
-                //_model.CurrentSpeed = Mathf.Min(
-                //    _model.CurrentSpeed + _carData.Acceleration, 
-                //    _carData.TopSpeed);
-
-                _model.CurrentAccel = _carData.Acceleration;
-            } else {
-                //_model.CurrentSpeed = Mathf.Max(
-                //    _model.CurrentSpeed - _carData.ReverseAcceleration, 
-                //    -_carData.TopSpeedReverse);
-
-                _model.CurrentAccel = -_carData.ReverseAcceleration;
-            }
-            
-            // Inverts angle when reversing
-            if (_model.CurrentAccel < 0f) {
-                _model.SteeringInput *= _model.AccelInput;
+        public void TakeDamage(float damage, bool ignoreFeedback = false) {
+            _model.CurrentHealth -= damage;
+            if (_model.CurrentHealth <= 0f) {
+                OnHealthDepleted.SafeCall(_index);
+                _model.CurrentHealth = 0f;
             }
 
-            //_model.CurrentSpeed = _carData.TopSpeed * 100f * Input.GetAxis("Vertical");
-            _model.SteeringAngle = _carData.MaxTurningAngle * _model.SteeringInput;
-        }
+            OnHealthChanged.SafeCall(_index, _model.CurrentHealth);
 
-        public override void OnFixedUpdate() {
-            base.OnFixedUpdate();
-
-            float currentSpeed = GetForwardVelocity().magnitude;
-            bool shouldAddForce = false;
-            if (_model.CurrentAccel > 0f && currentSpeed < _carData.TopSpeed) shouldAddForce = true;
-            if (_model.CurrentAccel < 0f && currentSpeed < _carData.TopSpeedReverse) shouldAddForce = true;
-
-            if (shouldAddForce) {
-                var steeringDirection = _view.Steering.forward;
-                var leftForce = steeringDirection * _model.CurrentAccel;
-                var rightForce = steeringDirection * _model.CurrentAccel;
-
-                _view.FrontLeftWheel.AddForce(leftForce);
-                _view.FrontRightWheel.AddForce(rightForce);
-
-                _view.DrawDebugLines(leftForce, rightForce);
+            if (!ignoreFeedback) {
+                View.FireFeedbackTrigger(CarView.HitTrigger);
             }
-
-            UpdateFriction();
         }
 
-        private void UpdateFriction() {
-            Vector3 impulse = _model.Rigidbody.mass * -GetLateralVelocity();
-            _model.Rigidbody.AddForce(impulse, ForceMode.Impulse);
-
-            //_model.Rigidbody.AddTorque(0.1f * _model.Rigidbody.inertiaTensor.magnitude * -_model.Rigidbody.angularVelocity, ForceMode.Impulse);
-            Vector3 currentForward = GetForwardVelocity();
-            float currentForwardSpeed = currentForward.magnitude;
-            float dragForceMagnitude = -2 * currentForwardSpeed;
-            _model.Rigidbody.AddForce(dragForceMagnitude * currentForward, ForceMode.Force);
+        public void Heal(float amount) {
+            _model.CurrentHealth = Mathf.Min(_model.CurrentHealth + amount, _carData.MaxHealth);
+            OnHealthChanged.SafeCall(_index, _model.CurrentHealth);
         }
 
-        private Vector3 GetLateralVelocity() {
-            var rightNormal = _view.transform.right;
-            return Vector3.Dot(rightNormal, _model.Rigidbody.velocity) * rightNormal;
+        public void SetNitro(bool value, float boost) {
+            _model.NitroOn = value;
+            _model.NitroBoost = boost;
         }
 
-        private Vector3 GetForwardVelocity() {
-            var forwardNormal = _view.transform.forward;
-            return Vector3.Dot(forwardNormal, _model.Rigidbody.velocity) * forwardNormal;
+        public void SetNitro(bool value) {
+            _model.NitroOn = value;
         }
 
-        public float GetLinearSpeed() {
-            return Vector3.Dot(_model.Rigidbody.velocity, _view.transform.forward);
+        public void SetShock(bool value) {
+            _model.ShockOn = value;
+        }
+
+        public void ShockHit(CarController target) {
+            PowerupComp.HandleShockHit(target);
+        }
+
+        public void ShockTaken(CarController shocker) {
+            PowerupComp.HandleShockTaken(shocker);
+            View.FireFeedbackTrigger(CarView.ShockHitTrigger);
+        }
+
+        public void Die() {
+            GameObject.Destroy(_view.gameObject);
         }
     }
 }

@@ -41,6 +41,47 @@ ModelImporter:
     100066: Plane014
     100068: salt_pan003
     100070: //RootNode
+    100072: Box049
+    100074: Box069
+    100076: Box075
+    100078: Box077
+    100080: Box078
+    100082: Box079
+    100084: Box080
+    100086: Box081
+    100088: Box082
+    100090: Box084
+    100092: Plane015
+    100094: Plane016
+    100096: Rock
+    100098: salt_pan_base
+    100100: Viper001
+    100102: cloth
+    100104: Rock001
+    100106: Rock002
+    100108: Rock003
+    100110: Rock004
+    100112: Rock005
+    100114: Rock006
+    100116: Rock007
+    100118: Box085
+    100120: Box086
+    100122: Box087
+    100124: Box088
+    100126: Box089
+    100128: Box090
+    100130: Box091
+    100132: Box092
+    100134: Box093
+    100136: Box094
+    100138: Box095
+    100140: Box096
+    100142: barrier
+    100144: Box112
+    100146: Box001
+    100148: Box076
+    100150: metal
+    100152: Box113
     400000: Box037
     400002: Box038
     400004: Box039
@@ -77,6 +118,47 @@ ModelImporter:
     400066: Plane014
     400068: salt_pan003
     400070: //RootNode
+    400072: Box049
+    400074: Box069
+    400076: Box075
+    400078: Box077
+    400080: Box078
+    400082: Box079
+    400084: Box080
+    400086: Box081
+    400088: Box082
+    400090: Box084
+    400092: Plane015
+    400094: Plane016
+    400096: Rock
+    400098: salt_pan_base
+    400100: Viper001
+    400102: cloth
+    400104: Rock001
+    400106: Rock002
+    400108: Rock003
+    400110: Rock004
+    400112: Rock005
+    400114: Rock006
+    400116: Rock007
+    400118: Box085
+    400120: Box086
+    400122: Box087
+    400124: Box088
+    400126: Box089
+    400128: Box090
+    400130: Box091
+    400132: Box092
+    400134: Box093
+    400136: Box094
+    400138: Box095
+    400140: Box096
+    400142: barrier
+    400144: Box112
+    400146: Box001
+    400148: Box076
+    400150: metal
+    400152: Box113
     2300000: Box037
     2300002: Box038
     2300004: Box039
@@ -112,6 +194,47 @@ ModelImporter:
     2300064: Plane013
     2300066: Plane014
     2300068: salt_pan003
+    2300070: Box049
+    2300072: Box069
+    2300074: Box075
+    2300076: Box077
+    2300078: Box078
+    2300080: Box079
+    2300082: Box080
+    2300084: Box081
+    2300086: Box082
+    2300088: Box084
+    2300090: Plane015
+    2300092: Plane016
+    2300094: Rock
+    2300096: salt_pan_base
+    2300098: Viper001
+    2300100: cloth
+    2300102: Rock001
+    2300104: Rock002
+    2300106: Rock003
+    2300108: Rock004
+    2300110: Rock005
+    2300112: Rock006
+    2300114: Rock007
+    2300116: Box085
+    2300118: Box086
+    2300120: Box087
+    2300122: Box088
+    2300124: Box089
+    2300126: Box090
+    2300128: Box091
+    2300130: Box092
+    2300132: Box093
+    2300134: Box094
+    2300136: Box095
+    2300138: Box096
+    2300140: barrier
+    2300142: Box112
+    2300144: Box001
+    2300146: Box076
+    2300148: metal
+    2300150: Box113
     3300000: Box037
     3300002: Box038
     3300004: Box039
@@ -147,6 +270,47 @@ ModelImporter:
     3300064: Plane013
     3300066: Plane014
     3300068: salt_pan003
+    3300070: Box049
+    3300072: Box069
+    3300074: Box075
+    3300076: Box077
+    3300078: Box078
+    3300080: Box079
+    3300082: Box080
+    3300084: Box081
+    3300086: Box082
+    3300088: Box084
+    3300090: Plane015
+    3300092: Plane016
+    3300094: Rock
+    3300096: salt_pan_base
+    3300098: Viper001
+    3300100: cloth
+    3300102: Rock001
+    3300104: Rock002
+    3300106: Rock003
+    3300108: Rock004
+    3300110: Rock005
+    3300112: Rock006
+    3300114: Rock007
+    3300116: Box085
+    3300118: Box086
+    3300120: Box087
+    3300122: Box088
+    3300124: Box089
+    3300126: Box090
+    3300128: Box091
+    3300130: Box092
+    3300132: Box093
+    3300134: Box094
+    3300136: Box095
+    3300138: Box096
+    3300140: barrier
+    3300142: Box112
+    3300144: Box001
+    3300146: Box076
+    3300148: metal
+    3300150: Box113
     4300000: Box037
     4300002: Box038
     4300004: salt_pan003
@@ -182,6 +346,47 @@ ModelImporter:
     4300064: Box066
     4300066: Cylinder001
     4300068: Box067
+    4300070: Viper001
+    4300072: Box049
+    4300074: salt_pan_base
+    4300076: Box069
+    4300078: Box075
+    4300080: Box077
+    4300082: Box078
+    4300084: Box079
+    4300086: Box080
+    4300088: Plane015
+    4300090: Box081
+    4300092: Box082
+    4300094: Rock
+    4300096: Box084
+    4300098: Plane016
+    4300100: cloth
+    4300102: Rock001
+    4300104: Rock002
+    4300106: Rock003
+    4300108: Rock004
+    4300110: Rock005
+    4300112: Rock006
+    4300114: Rock007
+    4300116: Box085
+    4300118: Box086
+    4300120: Box087
+    4300122: Box088
+    4300124: Box089
+    4300126: Box090
+    4300128: Box091
+    4300130: Box092
+    4300132: Box093
+    4300134: Box094
+    4300136: Box095
+    4300138: Box096
+    4300140: Box112
+    4300142: barrier
+    4300144: Box001
+    4300146: Box076
+    4300148: metal
+    4300150: Box113
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -206,7 +411,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
@@ -218,7 +423,7 @@ ModelImporter:
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
-    weldVertices: 1
+    weldVertices: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -228,7 +433,7 @@ ModelImporter:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -244,10 +449,10 @@ ModelImporter:
     rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
