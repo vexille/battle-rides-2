@@ -8,8 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49008fad4b3ccd7489dfd818eb3813fd, type: 3}
-  m_Name: MissileBalanceData
+  m_Script: {fileID: 11500000, guid: 5e9d22354855fd94d8cdb013c415f4d8, type: 3}
+  m_Name: BulletBalanceData
   m_EditorClassIdentifier: 
-  Damage: 14
-  Speed: 40
+  Speed: 25
+  ShotsInterval: 0.05
+  Damage: 1
+  BulletPairsFired: 20
+  DistanceBetweenBullets: 0.5

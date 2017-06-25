@@ -12,6 +12,9 @@ namespace Luderia.BattleRides2.Powerups {
         [SerializeField]
         private PowerupBalanceData _balance;
 
+        [SerializeField]
+        private PowerupPrefabs _prefabs;
+
         private PowerupSpawnPoint[] _spawnPoints;
         private ShuffleBag<PowerupSpawnPoint> _spawnShuffleBag;
         private ShuffleBag<PowerupType> _powerupShuffleBag;
@@ -19,6 +22,8 @@ namespace Luderia.BattleRides2.Powerups {
         private int _activePowerups;
 
         public PowerupBalanceData BalanceData { get { return _balance; } }
+
+        public PowerupPrefabs PowerupPrefabs { get { return _prefabs; } }
 
         public override void Initialize() {
             base.Initialize();
