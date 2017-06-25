@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33094556206608354}
   - component: {fileID: 23718024222532178}
   m_Layer: 0
-  m_Name: nitro
+  m_Name: nitro-caua
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
