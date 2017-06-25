@@ -14,6 +14,7 @@ namespace Luderia.BattleRides2.Powerups {
         private void OnTriggerEnter(Collider other) {
             if (DestroyOnHit) {
                 Destroy(gameObject);
+                Debug.Log("Killed by: " + other.name);
             }
         }
     }

@@ -21,7 +21,6 @@ namespace Luderia.BattleRides2.Powerups {
             }
 
             _rigidbody.AddForce(transform.forward * speedChange * _rigidbody.mass, ForceMode.Impulse);
-            Debug.Log("Speed: " + _rigidbody.velocity.magnitude);
         }
     }
 }
