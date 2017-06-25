@@ -37,10 +37,12 @@ namespace Luderia.BattleRides2.Data {
         [Header("Balance data references")]
         public MissileBalanceData MissileData;
         public BulletBalanceData BulletData;
+        public MineBalanceData MineData;
     }
 
 #if UNITY_EDITOR
     [CustomEditor(typeof(PowerupBalanceData))]
+    [CanEditMultipleObjects]
     public class PowerupBalanceDataEditor : Editor {
         private ReorderableList _list;
 

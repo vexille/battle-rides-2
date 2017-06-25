@@ -48,7 +48,7 @@ namespace Luderia.BattleRides2.Cars {
                 case PowerupType.Missile: FireMissile(); break;
                 case PowerupType.MachineGun: StartFiringBullets(); break;
                 case PowerupType.Shock: break;
-                case PowerupType.Landmine: break;
+                case PowerupType.Landmine: DeployMine(); break;
                 case PowerupType.Nitrous: break;
                 case PowerupType.Repair: break;
             }
@@ -68,6 +68,7 @@ namespace Luderia.BattleRides2.Cars {
             inflictor.DestroyOnHit = true;
         }
 
+        #region Bullets
         private void StartFiringBullets() {
             if (_bulletCoroutine != null) {
                 Owner.View.StopCoroutine(_bulletCoroutine);
@@ -100,6 +101,13 @@ namespace Luderia.BattleRides2.Cars {
                 FireBullets();
                 yield return new WaitForSeconds(_balance.BulletData.ShotsInterval);
             }
+        }
+        #endregion
+
+        private void DeployMine() {
+            var go = GameObject.Instantiate(_prefabs.MinePrefab, Owner.View.transform.position, Quaternion.identity);
+            var mine = go.GetComponent<Mine>();
+            mine.BalanceData = _balance.MineData;
         }
     }
 }

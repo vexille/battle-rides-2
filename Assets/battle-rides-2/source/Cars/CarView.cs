@@ -31,11 +31,13 @@ namespace Luderia.BattleRides2.Cars {
         }
 
         public void DrawDebugLines(Vector3 leftForce, Vector3 rightForce) {
-            Debug.DrawLine(FrontLeftWheel.transform.position, FrontLeftWheel.transform.position + FrontLeftWheel.transform.forward, Color.blue);
-            Debug.DrawLine(FrontRightWheel.transform.position, FrontRightWheel.transform.position + FrontRightWheel.transform.forward, Color.blue);
+            if (DebugText) {
+                Debug.DrawLine(FrontLeftWheel.transform.position, FrontLeftWheel.transform.position + FrontLeftWheel.transform.forward, Color.blue);
+                Debug.DrawLine(FrontRightWheel.transform.position, FrontRightWheel.transform.position + FrontRightWheel.transform.forward, Color.blue);
 
-            Debug.DrawLine(FrontLeftWheel.transform.position, FrontLeftWheel.transform.position + leftForce.normalized);
-            Debug.DrawLine(FrontRightWheel.transform.position, FrontRightWheel.transform.position + rightForce.normalized);
+                Debug.DrawLine(FrontLeftWheel.transform.position, FrontLeftWheel.transform.position + leftForce.normalized);
+                Debug.DrawLine(FrontRightWheel.transform.position, FrontRightWheel.transform.position + rightForce.normalized);
+            }
         }
 
         private void OnGUI() {

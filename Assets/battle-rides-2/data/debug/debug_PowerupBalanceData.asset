@@ -13,13 +13,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PowerupWeights:
   - Type: 1
-    Weight: 1
+    Weight: 0
   - Type: 2
-    Weight: 1
+    Weight: 0
   - Type: 3
     Weight: 0
   - Type: 4
-    Weight: 0
+    Weight: 1
   - Type: 5
     Weight: 0
   - Type: 6
@@ -30,3 +30,4 @@ MonoBehaviour:
   MaxActivePowerupPickups: 2
   MissileData: {fileID: 11400000, guid: 39046d36bd4911d4a8387d81bc75da5a, type: 2}
   BulletData: {fileID: 11400000, guid: 0c74d61553e13984798eca8fae0ecf00, type: 2}
+  MineData: {fileID: 11400000, guid: 173828921f73fad48a755de224bb13c7, type: 2}
