@@ -8,6 +8,8 @@ namespace Luderia.BattleRides2.Data {
         public float DirectionChangeFactor = 2f;
 
         [Tooltip("Factor by which the acceleration is multiplied when the car is turning")]
-        public float TurningSpeedFactor = 2f;
+        public float TurningSpeedFactor = 0.8f;
+
+        public float MaxLateralImpulse = 3f;
     }
 }
