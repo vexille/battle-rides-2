@@ -81,7 +81,7 @@ namespace Luderia.BattleRides2.Cars {
 
             if (Model.ShockOn && collision.rigidbody != null) {
                 var otherCar = collision.rigidbody.GetComponent<CarView>();
-                if (otherCar != null) {
+                if (otherCar != null && !otherCar.Model.ShockOn) {
                     Controller.ShockHit(otherCar.Controller);
                     otherCar.Controller.ShockTaken(Controller);
                 }

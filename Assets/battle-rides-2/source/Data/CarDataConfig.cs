@@ -14,13 +14,14 @@ namespace Luderia.BattleRides2.Data {
     }
 
     [CreateAssetMenu(menuName = "BattleRides/Car Data List", fileName = "CarDataList")]
-    public class CarDataList : ScriptableObject {
+    public class CarDataConfig : ScriptableObject {
+        public CarMovementConfig MovementConfig;
         public List<CarData> CarList;
     }
 
 #if UNITY_EDITOR
-    [CustomEditor(typeof(CarDataList))]
-    public class CarDataListEditor : Editor {
+    [CustomEditor(typeof(CarDataConfig))]
+    public class CarDataConfigEditor : Editor {
         private ReorderableList list;
 
         private void OnEnable() {
@@ -50,9 +51,13 @@ namespace Luderia.BattleRides2.Data {
             GUI.enabled = false;
             EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Script"));
             GUI.enabled = true;
-            EditorGUILayout.Space();
 
             serializedObject.Update();
+            EditorGUILayout.Space();
+
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("MovementConfig"));
+
+            EditorGUILayout.Space();
             list.DoLayoutList();
             serializedObject.ApplyModifiedProperties();
         }
