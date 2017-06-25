@@ -17,9 +17,10 @@ namespace Luderia.BattleRides2.States {
 
         private IEnumerator StartCountdown() {
             if (!CutToTheChase) {
+                InstanceBinder.Get<SoundController>().PlaySound("match-start");
                 Debug.Log("Start your engines!");
                 Debug.Log("3...");
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.4f);
                 Debug.Log("2...");
                 yield return new WaitForSeconds(1f);
                 Debug.Log("1...");
