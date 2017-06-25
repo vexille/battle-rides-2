@@ -12,6 +12,8 @@ namespace Luderia.BattleRides2.Cars {
         private PowerupBalanceData _balance;
 
         private IEnumerator _bulletCoroutine;
+        private IEnumerator _shockCoroutine;
+        private IEnumerator _nitroCoroutine;
 
         public CarController Owner { get; set; }
 
@@ -45,12 +47,12 @@ namespace Luderia.BattleRides2.Cars {
             }
 
             switch (powerup) {
-                case PowerupType.Missile: FireMissile(); break;
-                case PowerupType.MachineGun: StartFiringBullets(); break;
-                case PowerupType.Shock: break;
-                case PowerupType.Landmine: DeployMine(); break;
-                case PowerupType.Nitrous: break;
-                case PowerupType.Repair: break;
+                case PowerupType.Missile:       FireMissile(); break;
+                case PowerupType.MachineGun:    StartFiringBullets(); break;
+                case PowerupType.Shock:         StartShock(); break;
+                case PowerupType.Landmine:      DeployMine(); break;
+                case PowerupType.Nitrous:       StartNitro(); break;
+                case PowerupType.Repair:        DoRepair(); break;
             }
 
             _powerupSlots[slotIndex] = PowerupType.None;
@@ -66,6 +68,8 @@ namespace Luderia.BattleRides2.Cars {
             inflictor.Damage = _balance.MissileData.Damage;
             inflictor.DesiredSpeed = _balance.MissileData.Speed;
             inflictor.DestroyOnHit = true;
+
+            Owner.View.FireFeedbackTrigger(CarView.MissileTrigger);
         }
 
         #region Bullets
@@ -73,6 +77,8 @@ namespace Luderia.BattleRides2.Cars {
             if (_bulletCoroutine != null) {
                 Owner.View.StopCoroutine(_bulletCoroutine);
             }
+
+            Owner.View.SetFeedbackBool(CarView.MachineGunTrigger, true);
 
             _bulletCoroutine = BulletCoroutine();
             Owner.View.StartCoroutine(_bulletCoroutine);
@@ -101,6 +107,68 @@ namespace Luderia.BattleRides2.Cars {
                 FireBullets();
                 yield return new WaitForSeconds(_balance.BulletData.ShotsInterval);
             }
+
+            Owner.View.SetFeedbackBool(CarView.MachineGunTrigger, false);
+        }
+        #endregion
+
+        #region Shock
+        private void StartShock() {
+            if (_shockCoroutine != null) {
+                Owner.View.StopCoroutine(_shockCoroutine);
+            }
+            
+            _shockCoroutine = ShockCoroutine();
+            Owner.View.StartCoroutine(_shockCoroutine);
+        }
+
+        private IEnumerator ShockCoroutine() {
+            Owner.SetShock(true);
+            Owner.View.SetFeedbackBool(CarView.ShockTrigger, true);
+
+            yield return new WaitForSeconds(_balance.ShockData.Duration);
+
+            StopShock();
+        }
+
+        public void StopShock() {
+            if (_shockCoroutine != null) {
+                Owner.View.StopCoroutine(_shockCoroutine);
+            }
+
+            Owner.SetShock(false);
+            Owner.View.SetFeedbackBool(CarView.ShockTrigger, false);
+        }
+
+        public void HandleShockHit(CarController target) {
+            StopShock();
+            // TODO: handle adjusting feedback to target
+        }
+
+        public void HandleShockTaken(CarController shocker) {
+            Owner.TakeDamage(_balance.ShockData.Damage, true);
+            // TODO: handle ajusting feedback to shocker
+        }
+        #endregion
+
+        #region Nitro
+        private void StartNitro() {
+            if (_nitroCoroutine != null) {
+                Owner.View.StopCoroutine(_nitroCoroutine);
+            }
+
+            _nitroCoroutine = NitroCoroutine();
+            Owner.View.StartCoroutine(_nitroCoroutine);
+        }
+
+        private IEnumerator NitroCoroutine() {
+            Owner.SetNitro(true, _balance.NitroData.Boost);
+            Owner.View.SetFeedbackBool(CarView.NitroTrigger, true);
+
+            yield return new WaitForSeconds(_balance.NitroData.Duration);
+
+            Owner.View.SetFeedbackBool(CarView.NitroTrigger, false);
+            Owner.SetNitro(false);
         }
         #endregion
 
@@ -108,6 +176,13 @@ namespace Luderia.BattleRides2.Cars {
             var go = GameObject.Instantiate(_prefabs.MinePrefab, Owner.View.transform.position, Quaternion.identity);
             var mine = go.GetComponent<Mine>();
             mine.BalanceData = _balance.MineData;
+
+            Owner.View.FireFeedbackTrigger(CarView.MineTrigger);
+        }
+
+        private void DoRepair() {
+            Owner.Heal(_balance.RepairAmount);
+            Owner.View.FireFeedbackTrigger(CarView.RepairTrigger);
         }
     }
 }

@@ -11,5 +11,9 @@ namespace Luderia.BattleRides2.Cars {
 
         public float SteeringInput;
         public float AccelInput;
+
+        public bool ShockOn;
+        public bool NitroOn;
+        public float NitroBoost;
     }
 }

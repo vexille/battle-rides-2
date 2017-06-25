@@ -5,6 +5,15 @@ using UnityEngine;
 
 namespace Luderia.BattleRides2.Cars {
     public class CarView : LuftMonobehaviour {
+        public const string MissileTrigger      = "Missil";
+        public const string MachineGunTrigger   = "Metralhadora";
+        public const string ShockTrigger        = "Choque";
+        public const string ShockHitTrigger     = "Generic_Hit";
+        public const string MineTrigger         = "Mina";
+        public const string RepairTrigger       = "Cura";
+        public const string NitroTrigger        = "Nitro";
+        public const string HitTrigger          = "Generic_Hit";
+
         public Transform Steering;
         public Rigidbody FrontLeftWheel;
         public Rigidbody FrontRightWheel;
@@ -15,6 +24,7 @@ namespace Luderia.BattleRides2.Cars {
 
         public CarModel Model;
         private Rigidbody _rigidbody;
+        private Animator _feedbackAnimator;
 
         public int CarIndex { get; set; }
 
@@ -22,6 +32,7 @@ namespace Luderia.BattleRides2.Cars {
 
         private void Awake() {
             _rigidbody = GetComponent<Rigidbody>();
+            _feedbackAnimator = GetComponent<Animator>();
         }
 
         public override void OnUpdate() {
@@ -54,10 +65,26 @@ namespace Luderia.BattleRides2.Cars {
             }
         }
 
+        public void FireFeedbackTrigger(string trigger) {
+            _feedbackAnimator.SetTrigger(trigger);
+        }
+
+        public void SetFeedbackBool(string trigger, bool value) {
+            _feedbackAnimator.SetBool(trigger, value);
+        }
+
         private void OnCollisionEnter(Collision collision) {
             var damageInflictor = collision.gameObject.GetComponent<DamageInflictor>();
             if (damageInflictor != null) {
                 Controller.TakeDamage(damageInflictor.Damage);
+            }
+
+            if (Model.ShockOn && collision.rigidbody != null) {
+                var otherCar = collision.rigidbody.GetComponent<CarView>();
+                if (otherCar != null) {
+                    Controller.ShockHit(otherCar.Controller);
+                    otherCar.Controller.ShockTaken(Controller);
+                }
             }
         }
 
