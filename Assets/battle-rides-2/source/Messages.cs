@@ -14,6 +14,11 @@ namespace Luderia.BattleRides2 {
         public int CarIndex;
     }
 
+    public class CarHealthChanged {
+        public int CarIndex;
+        public float Percentage;
+    }
+
     public class PowerupSlotChanged {
         public int CarIndex;
         public int SlotIndex;

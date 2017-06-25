@@ -64,7 +64,10 @@ namespace Luderia.BattleRides2.Cars {
         }
 
         public void OnCarHealthChanged(int index, float health) {
-            Debug.Log("Car " + index + " now has " + health + " health");
+            InstanceBinder.Get<MessageRouter>().RaiseMessage(new CarHealthChanged {
+                CarIndex = index,
+                Percentage = health
+            });
         }
 
         public void OnCarHealthDepleted(int index) {

@@ -4,6 +4,7 @@ using LuftSchloss;
 using LuftSchloss.Core;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Luderia.BattleRides2.HUD {
     [System.Serializable]
@@ -14,6 +15,7 @@ namespace Luderia.BattleRides2.HUD {
 
     public class HUDController : LuftMonobehaviour {
         public PowerupHUDController[] PowerupHuds;
+        public Image[] HealthImages;
         public List<PowerupSprite> SpriteMappings;
 
         private Dictionary<PowerupType, Sprite> _mappings;
@@ -29,6 +31,11 @@ namespace Luderia.BattleRides2.HUD {
             InstanceBinder.Get<MessageRouter>().AddHandler<PowerupSlotChanged>(message => {
                 PowerupHuds[message.CarIndex].UpdateSlot(message.SlotIndex, _mappings[message.Value]);
             });
+
+            InstanceBinder.Get<MessageRouter>().AddHandler<CarHealthChanged>(message => {
+                HealthImages[message.CarIndex].fillAmount = message.Percentage;
+            });
+            
         }
     }
 }

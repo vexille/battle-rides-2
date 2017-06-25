@@ -2299,6 +2299,9 @@ MonoBehaviour:
   PowerupHuds:
   - {fileID: 114189545180176500}
   - {fileID: 114223799801001954}
+  HealthImages:
+  - {fileID: 114848499816393394}
+  - {fileID: 114178051286857270}
   SpriteMappings:
   - Type: 0
     PSprite: {fileID: 21300000, guid: ebccd3e56821c24429bdc22e9e837fa3, type: 3}

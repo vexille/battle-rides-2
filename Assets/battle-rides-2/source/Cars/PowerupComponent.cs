@@ -46,7 +46,6 @@ namespace Luderia.BattleRides2.Cars {
         }
 
         public void UsePowerup(int slotIndex) {
-            UnityEngine.Debug.Log("Use slot: " + slotIndex + " > " + _powerupSlots[slotIndex]);
             var powerup = _powerupSlots[slotIndex];
             if (powerup == PowerupType.None) {
                 return;
