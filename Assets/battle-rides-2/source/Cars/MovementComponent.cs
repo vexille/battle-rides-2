@@ -109,7 +109,6 @@ namespace Luderia.BattleRides2.Cars {
             var lateralImpulse = impulse.magnitude;
             if (lateralImpulse > _moveConfig.MaxLateralImpulse) {
                 impulse *= _moveConfig.MaxLateralImpulse / lateralImpulse;
-                Debug.Log(lateralImpulse);
             }
 
             _model.Rigidbody.AddForce(impulse, ForceMode.Impulse);
