@@ -54,10 +54,10 @@ namespace Luderia.BattleRides2.Cars {
                 _model.CurrentAccel = Mathf.Abs(_model.CurrentAccel) * _model.NitroBoost;
             }
 
-            // Inverts angle when reversing
-            //if (_model.CurrentAccel < 0f) {
-            //    _model.SteeringInput *= _model.AccelInput;
-            //}
+            //Comment to invert angle when reversing
+            if (_model.CurrentAccel < 0f) {
+                _model.SteeringInput *= _model.AccelInput;
+            }
 
             //_model.CurrentSpeed = _carData.TopSpeed * 100f * Input.GetAxis("Vertical");
             _model.SteeringAngle = _carData.MaxTurningAngle * _model.SteeringInput;

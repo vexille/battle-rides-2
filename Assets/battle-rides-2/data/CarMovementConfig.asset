@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: CarMovementConfig
   m_EditorClassIdentifier: 
   DirectionChangeFactor: 2
-  TurningSpeedFactor: 0.5
-  MaxLateralImpulse: 1.57
+  TurningSpeedFactor: 0.8
+  MaxLateralImpulse: -2
