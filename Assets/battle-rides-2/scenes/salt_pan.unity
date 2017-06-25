@@ -921,6 +921,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 34.7, y: -36.456, z: -7.2570004}
+--- !u!1001 &434983331
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4012562505390416, guid: 8585fd8c7e1d58542a4297b275b245dc, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 609.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4012562505390416, guid: 8585fd8c7e1d58542a4297b275b245dc, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4012562505390416, guid: 8585fd8c7e1d58542a4297b275b245dc, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4012562505390416, guid: 8585fd8c7e1d58542a4297b275b245dc, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4012562505390416, guid: 8585fd8c7e1d58542a4297b275b245dc, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4012562505390416, guid: 8585fd8c7e1d58542a4297b275b245dc, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4012562505390416, guid: 8585fd8c7e1d58542a4297b275b245dc, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4012562505390416, guid: 8585fd8c7e1d58542a4297b275b245dc, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 8585fd8c7e1d58542a4297b275b245dc, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &505112493
 Prefab:
   m_ObjectHideFlags: 0
@@ -1242,7 +1284,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &758447791
 Light:
   m_ObjectHideFlags: 0
