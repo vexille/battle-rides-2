@@ -13,17 +13,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PowerupWeights:
   - Type: 1
-    Weight: 0
+    Weight: 1
   - Type: 2
     Weight: 0
   - Type: 3
-    Weight: 1
+    Weight: 0
   - Type: 4
     Weight: 0
   - Type: 5
-    Weight: 1
+    Weight: 0
   - Type: 6
-    Weight: 1
+    Weight: 0
   PowerupDropPrefab: {fileID: 1767922142239318, guid: a2a1371459f77e0488bc89ebb32067e1,
     type: 2}
   PowerupSpawnInterval: 2

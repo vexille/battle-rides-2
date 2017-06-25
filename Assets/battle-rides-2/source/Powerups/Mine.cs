@@ -14,6 +14,7 @@ namespace Luderia.BattleRides2.Powerups {
         }
 
         private void Activate() {
+            Debug.Log("Activate!");
             MineCollider.isTrigger = false;
 
             var inflictor = gameObject.AddComponent<DamageInflictor>();
