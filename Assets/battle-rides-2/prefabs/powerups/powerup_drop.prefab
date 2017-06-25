@@ -52,7 +52,7 @@ Transform:
   m_GameObject: {fileID: 1522559910051728}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.6446633, y: 2.6446602, z: 2.6446602}
   m_Children: []
   m_Father: {fileID: 4405698592146538}
   m_RootOrder: 0
@@ -64,7 +64,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1767922142239318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 7.525376, y: -0.13999999, z: -0.47863114}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4170834261951732}
@@ -82,6 +82,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536864b86dd43214eaa570cfa4bc0c0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Missil: {fileID: 21300000, guid: 4d660f18b1666804a967ded2fce92a7c, type: 3}
+  MachineGun: {fileID: 21300000, guid: 94ec1790960d1c348bd2e6488bb20cc4, type: 3}
+  Shock: {fileID: 21300000, guid: b64ac214814a3974c8801998bf1607a1, type: 3}
+  Landmine: {fileID: 21300000, guid: 888dc1ee1ff864345a957ec510235e2e, type: 3}
+  Nitrous: {fileID: 21300000, guid: e02fcd581ba411f41bf0459d32b21084, type: 3}
+  Repair: {fileID: 21300000, guid: 5cfc46b6b3f765c4b941b818aefd739c, type: 3}
   SpawnPointIndex: 0
 --- !u!135 &135590798727540822
 SphereCollider:
@@ -127,7 +133,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2f4275e79167e86468df4a7392e3e7d3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b64ac214814a3974c8801998bf1607a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
