@@ -96,7 +96,7 @@ namespace Luderia.BattleRides2.Cars {
 
         private IEnumerator GameEndCoroutine() {
             yield return new WaitForSeconds(2f);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(0);
         }
     }
 }
