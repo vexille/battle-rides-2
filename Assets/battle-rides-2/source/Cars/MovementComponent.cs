@@ -9,55 +9,55 @@ namespace Luderia.BattleRides2.Cars {
         private CarModel _model;
         private CarView _view;
         private CarBalance _carData;
+        private CarMovementConfig _moveConfig;
 
-        public MovementComponent(CarModel model, CarView view, CarBalance carData) {
+        //private Rigidbody[] _tires;
+
+        private bool IsReversing {
+            get {
+                return _model.AccelInput < 0f;
+            }
+        }
+
+        private bool IsSteering {
+            get {
+                return _model.SteeringInput != 0;
+            }
+        }
+
+        public MovementComponent(CarModel model, CarView view, CarBalance carData, CarMovementConfig movementConfig) {
             _model = model;
             _view = view;
             _carData = carData;
+            _moveConfig = movementConfig;
+
+            //_tires = new Rigidbody[] {
+            //    view.FrontLeftWheel,
+            //    view.FrontRightWheel,
+            //    view.RearLeftWheel,
+            //    view.RearRightWheel
+            //};
         }
 
         public override void OnUpdate() {
             base.OnUpdate();
 
-            // Descomentar se por acaso vc quiser que todos os carros tenham o mesmo input
-            //{
-            //    _model.AccelInput = Input.GetKey(KeyCode.S) ? -1 : 1;
-
-            //    if (Input.GetKey(KeyCode.A)) {
-            //        _model.SteeringInput = -1;
-            //    } else
-            //    if (Input.GetKey(KeyCode.D)) {
-            //        _model.SteeringInput = 1;
-            //    } else {
-            //        _model.SteeringInput = 0;
-            //    }
-            //}
-
             // Handle speed update
             if (_model.AccelInput > 0) {
-                //_model.CurrentSpeed = Mathf.Min(
-                //    _model.CurrentSpeed + _carData.Acceleration, 
-                //    _carData.TopSpeed);
-
                 _model.CurrentAccel = _carData.Acceleration;
 
             } else {
-                //_model.CurrentSpeed = Mathf.Max(
-                //    _model.CurrentSpeed - _carData.ReverseAcceleration, 
-                //    -_carData.TopSpeedReverse);
-
                 _model.CurrentAccel = -_carData.ReverseAcceleration;
-
             }
 
             if (_model.NitroOn) {
-                _model.CurrentAccel *= _model.NitroBoost;
+                _model.CurrentAccel = Mathf.Abs(_model.CurrentAccel) * _model.NitroBoost;
             }
 
             // Inverts angle when reversing
-            if (_model.CurrentAccel < 0f) {
-                _model.SteeringInput *= _model.AccelInput;
-            }
+            //if (_model.CurrentAccel < 0f) {
+            //    _model.SteeringInput *= _model.AccelInput;
+            //}
 
             //_model.CurrentSpeed = _carData.TopSpeed * 100f * Input.GetAxis("Vertical");
             _model.SteeringAngle = _carData.MaxTurningAngle * _model.SteeringInput;
@@ -66,33 +66,58 @@ namespace Luderia.BattleRides2.Cars {
         public override void OnFixedUpdate() {
             base.OnFixedUpdate();
 
+            UpdateDrive();
+            UpdateFriction();
+        }
+
+        private void UpdateDrive() {
             float currentSpeed = GetForwardVelocity().magnitude;
             bool shouldAddForce = false;
             if (_model.CurrentAccel > 0f && currentSpeed < _carData.TopSpeed) shouldAddForce = true;
             if (_model.CurrentAccel < 0f && currentSpeed < _carData.TopSpeedReverse) shouldAddForce = true;
 
-            if (shouldAddForce) {
-                var steeringDirection = _view.Steering.forward;
-                var leftForce = steeringDirection * _model.CurrentAccel;
-                var rightForce = steeringDirection * _model.CurrentAccel;
+            if (!shouldAddForce) {
+                return;
+            }
+            
+            //float speedIncrement = _carData.TopSpeed * 0.2f;
 
-                _view.FrontLeftWheel.AddForce(leftForce);
-                _view.FrontRightWheel.AddForce(rightForce);
+            //float desiredSpeed = _model.AccelInput > 0 ?
+            //    Mathf.Min(currentSpeed + speedIncrement, _carData.TopSpeed) :
+            //    Mathf.Max(currentSpeed - speedIncrement, -_carData.TopSpeedReverse);
 
-                _view.DrawDebugLines(leftForce, rightForce);
+            var steeringDirection = _view.Steering.forward;
+            var force = steeringDirection * _model.CurrentAccel;
+
+            if (IsSteering) {
+                force *= _moveConfig.TurningSpeedFactor;
             }
 
-            UpdateFriction();
+            if (IsReversing) {
+                _view.RearLeftWheel.AddForce(force);
+                _view.RearRightWheel.AddForce(force);
+            } else {
+                _view.FrontLeftWheel.AddForce(force);
+                _view.FrontRightWheel.AddForce(force);
+            }
+
+            //_view.DrawDebugLines(leftForce, rightForce);
         }
 
         private void UpdateFriction() {
             Vector3 impulse = _model.Rigidbody.mass * -GetLateralVelocity();
+            var lateralImpulse = impulse.magnitude;
+            if (lateralImpulse > _moveConfig.MaxLateralImpulse) {
+                impulse *= _moveConfig.MaxLateralImpulse / lateralImpulse;
+                Debug.Log(lateralImpulse);
+            }
+
             _model.Rigidbody.AddForce(impulse, ForceMode.Impulse);
 
             //_model.Rigidbody.AddTorque(0.1f * _model.Rigidbody.inertiaTensor.magnitude * -_model.Rigidbody.angularVelocity, ForceMode.Impulse);
             Vector3 currentForward = GetForwardVelocity();
             float currentForwardSpeed = currentForward.magnitude;
-            float dragForceMagnitude = -2 * currentForwardSpeed;
+            float dragForceMagnitude = -2f * currentForwardSpeed;
             _model.Rigidbody.AddForce(dragForceMagnitude * currentForward, ForceMode.Force);
         }
 

@@ -10,7 +10,7 @@ using UnityEngine;
 namespace Luderia.BattleRides2.Cars {
     public class CarManager : LuftMonobehaviour {
         [SerializeField]
-        private CarDataList _carDataList;
+        private CarDataConfig _carDataConfig;
 
         private List<CarController> _allCars;
 
@@ -19,8 +19,8 @@ namespace Luderia.BattleRides2.Cars {
 
             _allCars = new List<CarController>();
             ShuffleBag<CarData> carShuffleBag = new ShuffleBag<CarData>();
-            for (int i = 0; i < _carDataList.CarList.Count; i++) {
-                carShuffleBag.Add(_carDataList.CarList[i]);
+            for (int i = 0; i < _carDataConfig.CarList.Count; i++) {
+                carShuffleBag.Add(_carDataConfig.CarList[i]);
             }
 
             CarSpawnPoint[] spawnPoints = GameObject.FindObjectsOfType<CarSpawnPoint>();
@@ -54,7 +54,12 @@ namespace Luderia.BattleRides2.Cars {
 
         private void CreateCarAt(ShuffleBag<CarData> carShuffleBag, CarSpawnPoint spawnPoint, int index) {
             var carController = AddChild<CarController>();
-            carController.InitializeCar(index, carShuffleBag.Next(), spawnPoint.transform.position, spawnPoint.transform.rotation);
+            carController.InitializeCar(
+                index, 
+                _carDataConfig.MovementConfig,
+                carShuffleBag.Next(), 
+                spawnPoint.transform.position, 
+                spawnPoint.transform.rotation);
             carController.OnHealthChanged += (i, health) => OnCarHealthChanged(i, health);
             carController.OnHealthDepleted += (i) => OnCarHealthDepleted(i);
             AddChild(carController.View);

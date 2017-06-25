@@ -23,7 +23,7 @@ namespace Luderia.BattleRides2.Cars {
         public int CarIndex { get { return _index; } }
 
 
-        public void InitializeCar(int index, CarData carData, Vector3 position, Quaternion rotation) {
+        public void InitializeCar(int index, CarMovementConfig movementConfig, CarData carData, Vector3 position, Quaternion rotation) {
             _index = index;
             _carData = carData.Data;
             _view = GameObject.Instantiate(carData.Prefab, position, rotation).GetComponent<CarView>();
@@ -36,7 +36,7 @@ namespace Luderia.BattleRides2.Cars {
             _view.CarIndex = _index;
             _view.Model = _model;
 
-            _movement = new MovementComponent(_model, _view, _carData);
+            _movement = new MovementComponent(_model, _view, _carData, movementConfig);
             AddChild(_movement);
             PowerupComp = AddChild<PowerupComponent>();
             PowerupComp.Owner = this;
@@ -51,6 +51,8 @@ namespace Luderia.BattleRides2.Cars {
         }
 
         public void TakeDamage(float damage, bool ignoreFeedback = false) {
+            if (_model.ShockOn) return;
+
             _model.CurrentHealth -= damage;
             if (_model.CurrentHealth <= 0f) {
                 OnHealthDepleted.SafeCall(_index);

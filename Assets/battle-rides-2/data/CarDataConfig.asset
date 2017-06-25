@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e49c01587352f1848bd5eb8e5a4f1a3b, type: 3}
+  m_Name: CarDataConfig
+  m_EditorClassIdentifier: 
+  MovementConfig: {fileID: 11400000, guid: 63d06a41527ae354f8a63dd5e2c6905b, type: 2}
+  CarList:
+  - Prefab: {fileID: 1158315899361162, guid: a3d908a377722ba4ab73cc0f7d9747f8, type: 2}
+    Data: {fileID: 11400000, guid: b75c1f765df3ab74ea1d8779c53fc0cd, type: 2}
