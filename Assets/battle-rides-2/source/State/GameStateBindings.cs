@@ -13,6 +13,7 @@ namespace Luderia.BattleRides2.States {
             ServiceFactory.Instance.RegisterSingleton<MessageRouter>();
             ServiceFactory.Instance.RegisterSingleton<InputManager>(GameObject.FindObjectOfType<InputManager>());
             ServiceFactory.Instance.RegisterSingleton<PowerupManager>(GameObject.FindObjectOfType<PowerupManager>());
+            ServiceFactory.Instance.RegisterSingleton<SoundController>(GameObject.FindObjectOfType<SoundController>());
         }
     }
 }
