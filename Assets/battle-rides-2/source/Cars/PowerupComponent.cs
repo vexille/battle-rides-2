@@ -8,6 +8,7 @@ namespace Luderia.BattleRides2.Cars {
     public class PowerupComponent : LuftController {
         private PowerupType[] _powerupSlots;
         private PowerupPrefabs _prefabs;
+        private PowerupBalanceData _balance;
 
         public CarController Owner { get; set; }
 
@@ -15,7 +16,10 @@ namespace Luderia.BattleRides2.Cars {
             base.Initialize();
 
             _powerupSlots = new PowerupType[PowerupBalanceData.MaxPowerupSlots];
-            _prefabs = InstanceBinder.Get<PowerupManager>().PowerupPrefabs;
+
+            var powerupManager = InstanceBinder.Get<PowerupManager>();
+            _prefabs = powerupManager.PowerupPrefabs;
+            _balance = powerupManager.BalanceData;
         }
 
         public bool AddPowerup(PowerupType type) {
@@ -38,31 +42,26 @@ namespace Luderia.BattleRides2.Cars {
             }
 
             switch (powerup) {
-                case PowerupType.Missile:
-                    SpawnMissile();
-                    break;
-                case PowerupType.MachineGun:
-                    break;
-                case PowerupType.Shock:
-                    break;
-                case PowerupType.Landmine:
-                    break;
-                case PowerupType.Nitrous:
-                    break;
-                case PowerupType.Repair:
-                    break;
-                default:
-                    break;
+                case PowerupType.Missile: SpawnMissile(); break;
+                case PowerupType.MachineGun: break;
+                case PowerupType.Shock: break;
+                case PowerupType.Landmine: break;
+                case PowerupType.Nitrous: break;
+                case PowerupType.Repair: break;
             }
 
             _powerupSlots[slotIndex] = PowerupType.None;
         }
 
         private void SpawnMissile() {
-            GameObject.Instantiate(
+            var go = GameObject.Instantiate(
                 _prefabs.MissilePrefab, 
                 Owner.View.MissilePivot.position, 
                 Owner.View.transform.localRotation);
+
+            var inflictor = go.AddComponent<MovingDamageInflictor>();
+            inflictor.Damage = _balance.MissileDamage;
+            inflictor.DesiredSpeed = _balance.MissileSpeed;
         }
     }
 }

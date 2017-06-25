@@ -47,6 +47,11 @@ namespace Luderia.BattleRides2.Data {
         }
 
         public override void OnInspectorGUI() {
+            GUI.enabled = false;
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Script"));
+            GUI.enabled = true;
+            EditorGUILayout.Space();
+
             serializedObject.Update();
             list.DoLayoutList();
             serializedObject.ApplyModifiedProperties();

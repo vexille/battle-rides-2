@@ -27,5 +27,9 @@ namespace Luderia.BattleRides2.Data {
         public int MaxActivePowerupPickups = 2;
 
         public List<PowerupWeight> PowerupWeights;
+
+        [Header("Missile")]
+        public float MissileDamage = 10f;
+        public float MissileSpeed = 10f;
     }
 }

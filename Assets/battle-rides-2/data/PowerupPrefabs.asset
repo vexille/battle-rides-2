@@ -13,5 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MissilePrefab: {fileID: 1310167822364004, guid: ef3638f4644f3e7429929aa33e32f3f0,
     type: 2}
-  BulletPrefab: {fileID: 0}
-  MinePrefab: {fileID: 1835957249109142, guid: 638dfdd5bd7ca6c44a5720a40f0333aa, type: 2}
+  BulletPrefab: {fileID: 1533825814142672, guid: c08f6c99ecda3924d930f9f4e298206b,
+    type: 2}
+  MinePrefab: {fileID: 1126336121912968, guid: 77d1661f88b58b54cb1ef9ab01567468, type: 2}
