@@ -57,7 +57,7 @@ namespace Luderia.BattleRides2.Cars {
                 _model.CurrentHealth = 0f;
             }
 
-            OnHealthChanged.SafeCall(_index, _model.CurrentHealth);
+            OnHealthChanged.SafeCall(_index, _model.CurrentHealth / _carData.MaxHealth);
 
             if (!ignoreFeedback) {
                 View.FireFeedbackTrigger(CarView.HitTrigger);
@@ -66,7 +66,7 @@ namespace Luderia.BattleRides2.Cars {
 
         public void Heal(float amount) {
             _model.CurrentHealth = Mathf.Min(_model.CurrentHealth + amount, _carData.MaxHealth);
-            OnHealthChanged.SafeCall(_index, _model.CurrentHealth);
+            OnHealthChanged.SafeCall(_index, _model.CurrentHealth / _carData.MaxHealth);
         }
 
         public void SetNitro(bool value, float boost) {

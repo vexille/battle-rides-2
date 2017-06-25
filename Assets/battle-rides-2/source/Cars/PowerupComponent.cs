@@ -1,4 +1,5 @@
-﻿using Luderia.BattleRides2.Data;
+﻿using Frictionless;
+using Luderia.BattleRides2.Data;
 using Luderia.BattleRides2.Powerups;
 using LuftSchloss;
 using LuftSchloss.Core;
@@ -31,7 +32,12 @@ namespace Luderia.BattleRides2.Cars {
             for (int i = 0; i < _powerupSlots.Length; i++) {
                 if (_powerupSlots[i] == PowerupType.None) {
                     _powerupSlots[i] = type;
-                    UnityEngine.Debug.Log("Add powerup: " + type + " in slot " + i);
+
+                    InstanceBinder.Get<MessageRouter>().RaiseMessage(new PowerupSlotChanged {
+                        CarIndex = Owner.CarIndex,
+                        SlotIndex = i,
+                        Value = type
+                    });
                     return true;
                 }
             }
@@ -40,7 +46,6 @@ namespace Luderia.BattleRides2.Cars {
         }
 
         public void UsePowerup(int slotIndex) {
-            UnityEngine.Debug.Log("Use slot: " + slotIndex + " > " + _powerupSlots[slotIndex]);
             var powerup = _powerupSlots[slotIndex];
             if (powerup == PowerupType.None) {
                 return;
@@ -54,6 +59,12 @@ namespace Luderia.BattleRides2.Cars {
                 case PowerupType.Nitrous:       StartNitro(); break;
                 case PowerupType.Repair:        DoRepair(); break;
             }
+
+            InstanceBinder.Get<MessageRouter>().RaiseMessage(new PowerupSlotChanged {
+                CarIndex = Owner.CarIndex,
+                SlotIndex = slotIndex,
+                Value = PowerupType.None
+            });
 
             _powerupSlots[slotIndex] = PowerupType.None;
         }
