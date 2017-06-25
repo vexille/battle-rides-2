@@ -4,8 +4,10 @@ using Luderia.BattleRides2.InputHandling;
 using LuftSchloss;
 using LuftSchloss.Core;
 using LuftSchloss.Util;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Luderia.BattleRides2.Cars {
     public class CarManager : LuftMonobehaviour {
@@ -35,9 +37,9 @@ namespace Luderia.BattleRides2.Cars {
         public override void OnUpdate() {
             base.OnUpdate();
 
-            //if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            //    _allCars[0].TakeDamage(15f);
-            //}
+            if (Input.GetKeyDown(KeyCode.Alpha1)) {
+                _allCars[0].TakeDamage(100f);
+            }
 
             //if (Input.GetKeyDown(KeyCode.Alpha2)) {
             //    _allCars[0].Heal(10f);
@@ -88,6 +90,13 @@ namespace Luderia.BattleRides2.Cars {
             carController.Die();
             _allCars.Remove(carController);
             InstanceBinder.Get<MessageRouter>().RaiseMessage(new CarDestroyed { CarIndex = index });
+
+            StartCoroutine(GameEndCoroutine());
+        }
+
+        private IEnumerator GameEndCoroutine() {
+            yield return new WaitForSeconds(2f);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
