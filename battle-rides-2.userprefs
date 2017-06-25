@@ -1,8 +1,8 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\battle-rides-2\source\Cars\CarView.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\battle-rides-2\shaders\Surface.shader">
     <Files>
-      <File FileName="Assets\battle-rides-2\shaders\Surface.shader" Line="1" Column="1" />
+      <File FileName="Assets\battle-rides-2\shaders\Surface.shader" Line="153" Column="5" />
       <File FileName="..\_NebulaWander\unity\Assets\Shaders\Cubemap\SimpleCubemap.shader" Line="1" Column="1" />
       <File FileName="Assets\battle-rides-2\source\Cars\CarController.cs" Line="1" Column="1" />
       <File FileName="Assets\battle-rides-2\source\Cars\CarView.cs" Line="1" Column="1" />
