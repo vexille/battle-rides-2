@@ -89,6 +89,10 @@ namespace Luderia.BattleRides2.Cars {
             var steeringDirection = _view.Steering.forward;
             var force = steeringDirection * _model.CurrentAccel;
 
+            if (IsSteering) {
+                force *= _moveConfig.TurningSpeedFactor;
+            }
+
             if (IsReversing) {
                 _view.RearLeftWheel.AddForce(force);
                 _view.RearRightWheel.AddForce(force);
@@ -102,12 +106,18 @@ namespace Luderia.BattleRides2.Cars {
 
         private void UpdateFriction() {
             Vector3 impulse = _model.Rigidbody.mass * -GetLateralVelocity();
+            var lateralImpulse = impulse.magnitude;
+            if (lateralImpulse > _moveConfig.MaxLateralImpulse) {
+                impulse *= _moveConfig.MaxLateralImpulse / lateralImpulse;
+                Debug.Log(lateralImpulse);
+            }
+
             _model.Rigidbody.AddForce(impulse, ForceMode.Impulse);
 
             //_model.Rigidbody.AddTorque(0.1f * _model.Rigidbody.inertiaTensor.magnitude * -_model.Rigidbody.angularVelocity, ForceMode.Impulse);
             Vector3 currentForward = GetForwardVelocity();
             float currentForwardSpeed = currentForward.magnitude;
-            float dragForceMagnitude = -2 * currentForwardSpeed;
+            float dragForceMagnitude = -2f * currentForwardSpeed;
             _model.Rigidbody.AddForce(dragForceMagnitude * currentForward, ForceMode.Force);
         }
 
