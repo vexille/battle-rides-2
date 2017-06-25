@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6e13aa1ac768bb44808500b47acd7f3, type: 3}
+  m_Name: PowerupBalanceData
+  m_EditorClassIdentifier: 
+  PowerupWeights:
+  - Type: 1
+    Weight: 32
+  - Type: 2
+    Weight: 28
+  - Type: 3
+    Weight: 16
+  - Type: 4
+    Weight: 12
+  - Type: 5
+    Weight: 8
+  - Type: 6
+    Weight: 4
+  PowerupDropPrefab: {fileID: 1767922142239318, guid: a2a1371459f77e0488bc89ebb32067e1,
+    type: 2}
+  PowerupSpawnInterval: 2
+  MaxActivePowerupPickups: 2
+  MissileData: {fileID: 11400000, guid: 39046d36bd4911d4a8387d81bc75da5a, type: 2}
+  BulletData: {fileID: 11400000, guid: 0c74d61553e13984798eca8fae0ecf00, type: 2}
+  MineData: {fileID: 11400000, guid: 173828921f73fad48a755de224bb13c7, type: 2}
+  ShockData: {fileID: 11400000, guid: f222226f6bc887f49a5bed0bb35aa027, type: 2}
+  NitroData: {fileID: 11400000, guid: 143d5f1ff618d934886e32f5d70a6be8, type: 2}
+  RepairAmount: 25

@@ -6,6 +6,8 @@ namespace LuftSchloss.Util {
         private List<T> _data;
         private int _cursor;
 
+        public int Count { get { return _data.Count; } }
+
         public ShuffleBag() {
             _cursor = -1;
             _data = new List<T>();

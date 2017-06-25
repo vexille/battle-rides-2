@@ -4,4 +4,7 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/battle-rides-2/scenes/salt_pan.unity
+    guid: b1c48ff5a8631a340b999c0d829d4588

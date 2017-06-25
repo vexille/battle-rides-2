@@ -25,6 +25,12 @@ namespace LuftSchloss.Events {
             }
         }
 
+        public void LateInitialize() {
+            for (int i = 0; i < _elements.Count; i++) {
+                _elements[i].LateInitialize();
+            }
+        }
+
         public void OnStartState() {
             for (int i = 0; i < _elements.Count; i++) {
                 _elements[i].OnStartState();

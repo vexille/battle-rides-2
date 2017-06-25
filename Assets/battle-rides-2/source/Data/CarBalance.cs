@@ -3,6 +3,8 @@
 namespace Luderia.BattleRides2.Data {
     [CreateAssetMenu(menuName = "BattleRides/Car balance data", fileName = "CarBalanceData")]
     public class CarBalance : ScriptableObject {
+        public float MaxHealth = 100f;
+
         [SerializeField]
         private float _topSpeed = 20f;
 

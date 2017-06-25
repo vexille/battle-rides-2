@@ -32,6 +32,8 @@ public class EventDispatchListTest {
         AssertHits(listenerList, hitCounts => hitCounts.Initialize );
     }
 
+    //TODO Late initialize
+
     [Test]
     public void OnStartState() {
         var dispatcherList = GetDispatchList();
@@ -86,6 +88,7 @@ public class EventDispatchListTest {
 
     public class EventHitCounts {
         public int Initialize;
+        public int LateInitialize;
         public int OnStartState;
         public int OnDestroyState;
         public int Update;
@@ -97,6 +100,10 @@ public class EventDispatchListTest {
 
         public void Initialize() {
             HitCounts.Initialize++;
+        }
+
+        public void LateInitialize() {
+            HitCounts.LateInitialize++;
         }
 
         public void OnStartState() {

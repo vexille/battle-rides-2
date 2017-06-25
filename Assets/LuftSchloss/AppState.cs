@@ -4,6 +4,8 @@ using UnityEngine;
 namespace LuftSchloss {
 	public abstract class AppState : LuftMonobehaviour {
 
+        private bool _started;
+
         protected abstract IBindingStrategy CreateBinding();
 
         private void Awake() {
@@ -24,6 +26,11 @@ namespace LuftSchloss {
         }
 
         private void Start() {
+            LateInitialize();
+        }
+
+        protected void StartState() {
+            _started = true;
             OnStartState();
         }
 
@@ -32,11 +39,15 @@ namespace LuftSchloss {
         }
 
         private void Update() {
-            OnUpdate();
+            if (_started) {
+                OnUpdate();
+            }
         }
 
         private void FixedUpdate() {
-            OnFixedUpdate();
+            if (_started) {
+                OnFixedUpdate();
+            }
         }
 
 	}
