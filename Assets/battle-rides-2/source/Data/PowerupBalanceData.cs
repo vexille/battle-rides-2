@@ -38,6 +38,9 @@ namespace Luderia.BattleRides2.Data {
         public MissileBalanceData MissileData;
         public BulletBalanceData BulletData;
         public MineBalanceData MineData;
+        public ShockBalanceData ShockData;
+        public NitroBalanceData NitroData;
+        public float RepairAmount = 25f;
     }
 
 #if UNITY_EDITOR

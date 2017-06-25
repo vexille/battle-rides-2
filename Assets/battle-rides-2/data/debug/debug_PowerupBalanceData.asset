@@ -17,13 +17,13 @@ MonoBehaviour:
   - Type: 2
     Weight: 0
   - Type: 3
-    Weight: 0
-  - Type: 4
     Weight: 1
+  - Type: 4
+    Weight: 0
   - Type: 5
-    Weight: 0
+    Weight: 1
   - Type: 6
-    Weight: 0
+    Weight: 1
   PowerupDropPrefab: {fileID: 1767922142239318, guid: a2a1371459f77e0488bc89ebb32067e1,
     type: 2}
   PowerupSpawnInterval: 2
@@ -31,3 +31,6 @@ MonoBehaviour:
   MissileData: {fileID: 11400000, guid: 39046d36bd4911d4a8387d81bc75da5a, type: 2}
   BulletData: {fileID: 11400000, guid: 0c74d61553e13984798eca8fae0ecf00, type: 2}
   MineData: {fileID: 11400000, guid: 173828921f73fad48a755de224bb13c7, type: 2}
+  ShockData: {fileID: 11400000, guid: f222226f6bc887f49a5bed0bb35aa027, type: 2}
+  NitroData: {fileID: 11400000, guid: 143d5f1ff618d934886e32f5d70a6be8, type: 2}
+  RepairAmount: 25

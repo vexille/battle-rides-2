@@ -50,6 +50,10 @@ namespace Luderia.BattleRides2.Cars {
 
             }
 
+            if (_model.NitroOn) {
+                _model.CurrentAccel *= _model.NitroBoost;
+            }
+
             // Inverts angle when reversing
             if (_model.CurrentAccel < 0f) {
                 _model.SteeringInput *= _model.AccelInput;

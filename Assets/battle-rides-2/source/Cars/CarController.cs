@@ -16,12 +16,12 @@ namespace Luderia.BattleRides2.Cars {
         private CarBalance _carData;
 
         private MovementComponent _movement;
+        public PowerupComponent PowerupComp { get; private set; }
 
         public CarView View { get { return _view; } }
 
         public int CarIndex { get { return _index; } }
 
-        public PowerupComponent PowerupComp { get; private set; }
 
         public void InitializeCar(int index, CarData carData, Vector3 position, Quaternion rotation) {
             _index = index;
@@ -50,7 +50,7 @@ namespace Luderia.BattleRides2.Cars {
             }
         }
 
-        public void TakeDamage(float damage) {
+        public void TakeDamage(float damage, bool ignoreFeedback = false) {
             _model.CurrentHealth -= damage;
             if (_model.CurrentHealth <= 0f) {
                 OnHealthDepleted.SafeCall(_index);
@@ -58,11 +58,37 @@ namespace Luderia.BattleRides2.Cars {
             }
 
             OnHealthChanged.SafeCall(_index, _model.CurrentHealth);
+
+            if (!ignoreFeedback) {
+                View.FireFeedbackTrigger(CarView.HitTrigger);
+            }
         }
 
         public void Heal(float amount) {
             _model.CurrentHealth = Mathf.Min(_model.CurrentHealth + amount, _carData.MaxHealth);
             OnHealthChanged.SafeCall(_index, _model.CurrentHealth);
+        }
+
+        public void SetNitro(bool value, float boost) {
+            _model.NitroOn = value;
+            _model.NitroBoost = boost;
+        }
+
+        public void SetNitro(bool value) {
+            _model.NitroOn = value;
+        }
+
+        public void SetShock(bool value) {
+            _model.ShockOn = value;
+        }
+
+        public void ShockHit(CarController target) {
+            PowerupComp.HandleShockHit(target);
+        }
+
+        public void ShockTaken(CarController shocker) {
+            PowerupComp.HandleShockTaken(shocker);
+            View.FireFeedbackTrigger(CarView.ShockHitTrigger);
         }
 
         public void Die() {
