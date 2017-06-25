@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62fcf83bfd480024e995a9de2f788a2f, type: 3}
   m_Name: MissileBalanceData
   m_EditorClassIdentifier: 
-  Damage: 10
+  Damage: 14
   Speed: 40
