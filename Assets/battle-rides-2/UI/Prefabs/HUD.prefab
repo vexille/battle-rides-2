@@ -234,6 +234,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4012562505390416}
+  - component: {fileID: 114969142720699420}
   m_Layer: 0
   m_Name: HUD
   m_TagString: Untagged
@@ -694,6 +695,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224819583060303006}
+  - component: {fileID: 114223799801001954}
   m_Layer: 5
   m_Name: power_ups
   m_TagString: Untagged
@@ -788,6 +790,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224670213451908158}
+  - component: {fileID: 114189545180176500}
   m_Layer: 5
   m_Name: power_ups
   m_TagString: Untagged
@@ -1903,7 +1906,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 5cfc46b6b3f765c4b941b818aefd739c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ebccd3e56821c24429bdc22e9e837fa3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1938,6 +1941,38 @@ MonoBehaviour:
   m_FillAmount: 0.894
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114189545180176500
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1994776482170174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c390318190d4b941912be6aa9fdc76a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PowerupSlots:
+  - {fileID: 114630093203150420}
+  - {fileID: 114863336892470060}
+  - {fileID: 114844092471293698}
+  - {fileID: 114139808327605156}
+--- !u!114 &114223799801001954
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1890020155504616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c390318190d4b941912be6aa9fdc76a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PowerupSlots:
+  - {fileID: 114728342030464978}
+  - {fileID: 114663640865925140}
+  - {fileID: 114804983449112518}
+  - {fileID: 114389623761239348}
 --- !u!114 &114295382897142654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1973,7 +2008,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 5cfc46b6b3f765c4b941b818aefd739c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ebccd3e56821c24429bdc22e9e837fa3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2066,7 +2101,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b64ac214814a3974c8801998bf1607a1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ebccd3e56821c24429bdc22e9e837fa3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2093,7 +2128,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 5cfc46b6b3f765c4b941b818aefd739c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ebccd3e56821c24429bdc22e9e837fa3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2120,7 +2155,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b64ac214814a3974c8801998bf1607a1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ebccd3e56821c24429bdc22e9e837fa3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2161,7 +2196,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 5cfc46b6b3f765c4b941b818aefd739c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ebccd3e56821c24429bdc22e9e837fa3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2188,7 +2223,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 5cfc46b6b3f765c4b941b818aefd739c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ebccd3e56821c24429bdc22e9e837fa3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2242,7 +2277,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 5cfc46b6b3f765c4b941b818aefd739c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ebccd3e56821c24429bdc22e9e837fa3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2250,6 +2285,35 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114969142720699420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1298893438106140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a67db7b5e8d7634f81b0d47cdb6f61f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PowerupHuds:
+  - {fileID: 114189545180176500}
+  - {fileID: 114223799801001954}
+  SpriteMappings:
+  - Type: 0
+    PSprite: {fileID: 21300000, guid: ebccd3e56821c24429bdc22e9e837fa3, type: 3}
+  - Type: 1
+    PSprite: {fileID: 21300000, guid: 4d660f18b1666804a967ded2fce92a7c, type: 3}
+  - Type: 2
+    PSprite: {fileID: 21300000, guid: 94ec1790960d1c348bd2e6488bb20cc4, type: 3}
+  - Type: 3
+    PSprite: {fileID: 21300000, guid: b64ac214814a3974c8801998bf1607a1, type: 3}
+  - Type: 4
+    PSprite: {fileID: 21300000, guid: 888dc1ee1ff864345a957ec510235e2e, type: 3}
+  - Type: 5
+    PSprite: {fileID: 21300000, guid: e02fcd581ba411f41bf0459d32b21084, type: 3}
+  - Type: 6
+    PSprite: {fileID: 21300000, guid: 5cfc46b6b3f765c4b941b818aefd739c, type: 3}
 --- !u!222 &222110463611851670
 CanvasRenderer:
   m_ObjectHideFlags: 1
