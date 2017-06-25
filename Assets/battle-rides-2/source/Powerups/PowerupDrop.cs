@@ -7,6 +7,12 @@ namespace Luderia.BattleRides2.Powerups {
     public class PowerupDrop : MonoBehaviour {
         private PowerupType _powerupType;
         private SpriteRenderer _sprite;
+		public Sprite Missil;
+		public Sprite MachineGun;
+		public Sprite Shock;
+		public Sprite Landmine;
+		public Sprite Nitrous;
+		public Sprite Repair;
 
         public int SpawnPointIndex;
 
@@ -26,23 +32,23 @@ namespace Luderia.BattleRides2.Powerups {
 
         private void UpdateSprite() {
             switch (_powerupType) {
-                case PowerupType.Missile:
-                    _sprite.color = Color.red;
+			case PowerupType.Missile:
+					_sprite.sprite = Missil;
                     break;
-                case PowerupType.MachineGun:
-                    _sprite.color = Color.yellow;
+			case PowerupType.MachineGun:
+				_sprite.sprite = MachineGun;
                     break;
-                case PowerupType.Shock:
-                    _sprite.color = Color.blue;
+			case PowerupType.Shock:
+				_sprite.sprite = Shock;
                     break;
-                case PowerupType.Landmine:
-                    _sprite.color = Color.black;
+			case PowerupType.Landmine:
+				_sprite.sprite = Landmine;
                     break;
-                case PowerupType.Nitrous:
-                    _sprite.color = Color.cyan;
+			case PowerupType.Nitrous:
+				_sprite.sprite = Nitrous;
                     break;
-                case PowerupType.Repair:
-                    _sprite.color = Color.green;
+			case PowerupType.Repair:
+				_sprite.sprite = Repair;
                     break;
                 default:
                     break;
