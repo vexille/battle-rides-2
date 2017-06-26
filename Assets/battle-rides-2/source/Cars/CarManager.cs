@@ -37,9 +37,9 @@ namespace Luderia.BattleRides2.Cars {
         public override void OnUpdate() {
             base.OnUpdate();
 
-            //if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            //    _allCars[0].TakeDamage(100f);
-            //}
+            if (Input.GetKeyDown(KeyCode.Alpha1)) {
+                _allCars[0].TakeDamage(100f);
+            }
 
             //if (Input.GetKeyDown(KeyCode.Alpha2)) {
             //    _allCars[0].Heal(10f);
@@ -90,7 +90,8 @@ namespace Luderia.BattleRides2.Cars {
             carController.Die();
             _allCars.Remove(carController);
             InstanceBinder.Get<MessageRouter>().RaiseMessage(new CarDestroyed { CarIndex = index });
-
+            InstanceBinder.Get<SoundController>().PlaySound("explosao_final");
+            InstanceBinder.Get<SoundController>().StopSound("1-Terra");
             StartCoroutine(GameEndCoroutine());
         }
 
