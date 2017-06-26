@@ -37,9 +37,9 @@ namespace Luderia.BattleRides2.Cars {
         public override void OnUpdate() {
             base.OnUpdate();
 
-            if (Input.GetKeyDown(KeyCode.Alpha1)) {
-                _allCars[0].TakeDamage(100f);
-            }
+            //if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            //    _allCars[0].TakeDamage(100f);
+            //}
 
             //if (Input.GetKeyDown(KeyCode.Alpha2)) {
             //    _allCars[0].Heal(10f);
