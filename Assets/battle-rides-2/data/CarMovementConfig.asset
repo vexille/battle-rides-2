@@ -14,3 +14,4 @@ MonoBehaviour:
   DirectionChangeFactor: 2
   TurningSpeedFactor: 0.8
   MaxLateralImpulse: -2
+  RealistReverseSteering: 0

@@ -55,7 +55,7 @@ namespace Luderia.BattleRides2.Cars {
             }
 
             //Comment to invert angle when reversing
-            if (_model.CurrentAccel < 0f) {
+            if (_moveConfig.RealistReverseSteering && _model.CurrentAccel < 0f) {
                 _model.SteeringInput *= _model.AccelInput;
             }
 

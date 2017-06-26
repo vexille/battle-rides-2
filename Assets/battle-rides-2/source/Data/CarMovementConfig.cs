@@ -11,5 +11,7 @@ namespace Luderia.BattleRides2.Data {
         public float TurningSpeedFactor = 0.8f;
 
         public float MaxLateralImpulse = 3f;
+
+        public bool RealistReverseSteering = false;
     }
 }
