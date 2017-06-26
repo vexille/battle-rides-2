@@ -1,6 +1,5 @@
 ﻿using Luderia.BattleRides2.Data;
-using System.Collections;
-using System.Collections.Generic;
+using LuftSchloss;
 using UnityEngine;
 
 namespace Luderia.BattleRides2.Powerups {
@@ -20,6 +19,10 @@ namespace Luderia.BattleRides2.Powerups {
             var inflictor = gameObject.AddComponent<DamageInflictor>();
             inflictor.Damage = BalanceData.Damage;
             inflictor.DestroyOnHit = true;
+        }
+
+        private void OnDestroy() {
+            InstanceBinder.Get<SoundController>().PlaySound("mine-hits-car");
         }
     }
 }

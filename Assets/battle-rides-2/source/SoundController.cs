@@ -23,4 +23,8 @@ public class SoundController : LuftMonobehaviour {
     public void PlaySound(string sound) {
         _sourceDic[sound].Play();
     }
+
+    public void StopSound(string sound) {
+        _sourceDic[sound].Stop();
+    }
 }

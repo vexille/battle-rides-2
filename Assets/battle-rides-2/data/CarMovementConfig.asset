@@ -13,4 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DirectionChangeFactor: 2
   TurningSpeedFactor: 0.8
-  MaxLateralImpulse: -2
+  MaxLateralImpulse: 100
+  RealistReverseSteering: 0

@@ -90,7 +90,8 @@ namespace Luderia.BattleRides2.Cars {
             carController.Die();
             _allCars.Remove(carController);
             InstanceBinder.Get<MessageRouter>().RaiseMessage(new CarDestroyed { CarIndex = index });
-
+            InstanceBinder.Get<SoundController>().PlaySound("explosao_final");
+            InstanceBinder.Get<SoundController>().StopSound("1-Terra");
             StartCoroutine(GameEndCoroutine());
         }
 

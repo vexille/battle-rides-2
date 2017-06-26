@@ -153,6 +153,7 @@ namespace Luderia.BattleRides2.Cars {
 
         public void HandleShockHit(CarController target) {
             StopShock();
+            InstanceBinder.Get<SoundController>().PlaySound("shock-hits-car");
             // TODO: handle adjusting feedback to target
         }
 
