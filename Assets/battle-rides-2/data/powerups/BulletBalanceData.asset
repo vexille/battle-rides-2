@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: BulletBalanceData
   m_EditorClassIdentifier: 
   Speed: 25
-  ShotsInterval: 0.05
+  ShotsInterval: 0.08
   Damage: 1
-  BulletPairsFired: 20
-  DistanceBetweenBullets: 0.5
+  BulletPairsFired: 16
+  DistanceBetweenBullets: 0.4
